@@ -95,3 +95,67 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out forwards;
 }
+
+/* Mobile and PWA optimizations */
+html {
+  height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+input, textarea, select, button {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure viewport is properly set on mobile */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Prevent pinch zoom on input focus */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better button styling for touch targets */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal improvements for PWA */
+@media (max-height: 500px) {
+  dialog, .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
