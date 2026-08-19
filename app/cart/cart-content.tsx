@@ -3,8 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useCart } from "@/components/cart-provider"
+import { Button } from "@/src/components/ui/button"
+import { useCart } from "@/src/components/cart-provider"
 import { useState } from "react"
 import { CheckoutForm } from "./checkout-form"
 

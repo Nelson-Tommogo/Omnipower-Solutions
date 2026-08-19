@@ -3,9 +3,9 @@
 import Image from "next/image"
 import { useState } from "react"
 import { ShoppingCart, Check, ChevronDown, ChevronUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useCart } from "@/components/cart-provider"
+import { Button } from "@/src/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
+import { useCart } from "@/src/components/cart-provider"
 
 type ProductDetailProps = {
   product: {

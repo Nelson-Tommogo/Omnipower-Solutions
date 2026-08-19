@@ -2,12 +2,12 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Textarea } from "@/components/ui/textarea"
-import { useCart } from "@/components/cart-provider"
+import { Button } from "@/src/components/ui/button"
+import { Input } from "@/src/components/ui/input"
+import { Label } from "@/src/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
+import { Textarea } from "@/src/components/ui/textarea"
+import { useCart } from "@/src/components/cart-provider"
 import { CheckCircle, AlertCircle, Copy, CreditCard, Smartphone, Building, ArrowRight, User, Mail, Phone, MapPin } from "lucide-react"
 
 // Payment Details

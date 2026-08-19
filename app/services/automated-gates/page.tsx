@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/src/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import gates from "../images/automatedgates.jpg"
 import dooors from "../images/hdsmartdoorlock.jpg"

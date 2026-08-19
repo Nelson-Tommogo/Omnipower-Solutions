@@ -2,11 +2,11 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { CartProvider } from "@/components/cart-provider"
-import { InstallPrompt } from "@/components/install-prompt"
-import { ServiceWorkerRegister } from "@/components/service-worker-register"
+import { Header } from "@/src/components/header"
+import { Footer } from "@/src/components/footer"
+import { CartProvider } from "@/src/components/cart-provider"
+import { InstallPrompt } from "@/src/components/install-prompt"
+import { ServiceWorkerRegister } from "@/src/components/service-worker-register"
 
 const inter = Inter({ subsets: ["latin"] })
 
