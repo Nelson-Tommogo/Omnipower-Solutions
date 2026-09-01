@@ -6,9 +6,8 @@ import {
   MdLocationOn,
   MdAccessTime,
   MdFacebook,
-  MdX,
-  MdInstagram,
-  MdLinkedin,
+  MdChatBubble,
+  MdBusinessCenter,
 } from "react-icons/md"
 
 export function Footer() {
@@ -39,23 +38,23 @@ export function Footer() {
               <Link
                 href="https://x.com/omnipowerkenya"
                 className="hover:text-primary transition-colors"
-                aria-label="Twitter"
+                aria-label="X"
               >
-                <MdX size={20} />
+                <MdChatBubble size={20} />
               </Link>
               <Link
                 href="https://www.instagram.com"
                 className="hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
-                <MdInstagram size={20} />
+                <MdBusinessCenter size={20} />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/omnipower-solution-kenya/?"
                 className="hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
-                <MdLinkedin size={20} />
+                <MdBusinessCenter size={20} />
               </Link>
               <Link
                 href="https://www.tiktok.com/@evanceokoth0"

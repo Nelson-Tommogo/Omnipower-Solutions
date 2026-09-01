@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/src/components/ui/button"
-import { X, Download } from "lucide-react"
+import { MdClose, MdDownload } from "react-icons/md"
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>

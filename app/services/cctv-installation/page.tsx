@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 import cctv from "../images/hdcctv.jpg"
 import cctvhd from "../images/cctv.jpg"
 import cctvpic from "../images/cctvpic.jpeg"

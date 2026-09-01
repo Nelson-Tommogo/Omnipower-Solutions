@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react"
+import { MdDeleteOutline, MdAdd, MdRemove, MdShoppingBag } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { useCart } from "@/src/components/cart-provider"
 import { useState } from "react"
@@ -25,7 +25,7 @@ export function CartContent() {
   if (items.length === 0) {
     return (
       <div className="text-center py-16">
-        <ShoppingBag size={64} className="mx-auto text-gray-300 mb-6" />
+        <MdShoppingBag size={64} className="mx-auto text-gray-300 mb-6" />
         <h2 className="text-2xl font-bold mb-2">Your cart is empty</h2>
         <p className="text-gray-500 mb-8">Looks like you haven't added any products to your cart yet.</p>
         <Button asChild>
@@ -63,7 +63,7 @@ export function CartContent() {
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
                     disabled={item.quantity <= 1}
                   >
-                    <Minus size={14} />
+                    <MdRemove size={14} />
                   </Button>
                   <span className="w-8 text-center">{item.quantity}</span>
                   <Button
@@ -72,7 +72,7 @@ export function CartContent() {
                     className="h-8 w-8"
                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
                   >
-                    <Plus size={14} />
+                    <MdAdd size={14} />
                   </Button>
                 </div>
 
@@ -84,7 +84,7 @@ export function CartContent() {
                     className="text-red-500 hover:text-red-700 hover:bg-red-50 -mx-2"
                     onClick={() => removeItem(item.id)}
                   >
-                    <Trash2 size={16} className="mr-1" />
+                    <MdDeleteOutline size={16} className="mr-1" />
                     Remove
                   </Button>
                 </div>

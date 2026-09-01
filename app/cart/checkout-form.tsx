@@ -8,7 +8,19 @@ import { Label } from "@/src/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
 import { Textarea } from "@/src/components/ui/textarea"
 import { useCart } from "@/src/components/cart-provider"
-import { CheckCircle, AlertCircle, Copy, CreditCard, Smartphone, Building, ArrowRight, User, Mail, Phone, MapPin } from "lucide-react"
+import {
+  MdCheckCircle,
+  MdWarning,
+  MdContentCopy,
+  MdCreditCard,
+  MdSmartphone,
+  MdBusiness,
+  MdArrowForward,
+  MdPerson,
+  MdMail,
+  MdPhone,
+  MdLocationOn,
+} from "react-icons/md"
 
 // Payment Details
 const MPESA_PAYMENT = {
@@ -65,7 +77,7 @@ export function CheckoutForm() {
     return (
       <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 text-center max-w-md mx-auto">
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-          <CheckCircle className="text-green-600 w-8 h-8 sm:w-10 sm:h-10" />
+          <MdCheckCircle className="text-green-600 w-8 h-8 sm:w-10 sm:h-10" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold mb-2">Order Placed! 🎉</h2>
         <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
@@ -75,7 +87,7 @@ export function CheckoutForm() {
         {paymentMethod === "mpesa-stk" && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-3 sm:p-4 text-yellow-800">
             <div className="flex items-center gap-2 mb-2">
-              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <MdWarning className="w-5 h-5 flex-shrink-0" />
               <h3 className="font-bold text-sm sm:text-base">STK Push Unavailable</h3>
             </div>
             <p className="text-xs sm:text-sm">
@@ -87,7 +99,7 @@ export function CheckoutForm() {
         {paymentMethod === "mpesa-paybill" && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 sm:p-4 text-left space-y-3 sm:space-y-4">
             <div className="flex items-center gap-2 justify-center text-blue-900">
-              <CreditCard className="w-5 h-5" />
+              <MdCreditCard className="w-5 h-5" />
               <h3 className="font-bold text-sm sm:text-base">M-Pesa Paybill</h3>
             </div>
             <div className="bg-white rounded-lg p-3 border border-blue-200">
@@ -131,7 +143,7 @@ export function CheckoutForm() {
         {paymentMethod === "bank" && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-3 sm:p-4 text-left space-y-3 sm:space-y-4">
             <div className="flex items-center gap-2 justify-center text-green-900">
-              <Building className="w-5 h-5" />
+              <MdBusiness className="w-5 h-5" />
               <h3 className="font-bold text-sm sm:text-base">Bank Transfer</h3>
             </div>
             <div className="bg-white rounded-lg p-3 border border-green-200">
@@ -201,7 +213,7 @@ export function CheckoutForm() {
               <RadioGroupItem value="mpesa-paybill" id="paybill" className="sr-only" />
               <Label htmlFor="paybill" className="flex items-center gap-2 sm:gap-3 cursor-pointer w-full">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0">
-                  <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <MdCreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-sm sm:text-base">M-Pesa Paybill</p>
@@ -222,7 +234,7 @@ export function CheckoutForm() {
               <RadioGroupItem value="bank" id="bank" className="sr-only" />
               <Label htmlFor="bank" className="flex items-center gap-2 sm:gap-3 cursor-pointer w-full">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
-                  <Building className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <MdBusiness className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-sm sm:text-base">Bank Transfer</p>
@@ -243,7 +255,7 @@ export function CheckoutForm() {
               <RadioGroupItem value="mpesa-stk" id="stk" className="sr-only" />
               <Label htmlFor="stk" className="flex items-center gap-2 sm:gap-3 cursor-pointer w-full">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 flex-shrink-0">
-                  <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <MdSmartphone className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-sm sm:text-base">M-Pesa STK Push</p>
@@ -293,7 +305,7 @@ export function CheckoutForm() {
               </div>
             </div>
             <p className="text-xs text-blue-600 mt-3 flex items-center gap-1">
-              <ArrowRight className="w-3 h-3" />
+              <MdArrowForward className="w-3 h-3" />
               Go to M-Pesa → Lipa na M-Pesa → Paybill
             </p>
           </div>
@@ -333,7 +345,7 @@ export function CheckoutForm() {
         {paymentMethod === "mpesa-stk" && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-3 sm:p-4">
             <div className="flex items-start gap-2 text-yellow-700">
-              <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
+              <MdWarning className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-sm sm:text-base">STK Push Unavailable</p>
                 <p className="text-xs sm:text-sm mt-1">
@@ -348,7 +360,7 @@ export function CheckoutForm() {
         {paymentMethod === "mpesa-stk" && (
           <div className="space-y-3 sm:space-y-4 border-t pt-3 sm:pt-4">
             <h3 className="text-xs sm:text-sm font-medium text-gray-700 flex items-center gap-2">
-              <User className="w-4 h-4" />
+              <MdPerson className="w-4 h-4" />
               Delivery Details
             </h3>
             

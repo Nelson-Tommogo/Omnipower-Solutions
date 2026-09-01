@@ -1,5 +1,5 @@
 import { ContactForm } from "./contact-form"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { MdPhone, MdMail, MdLocationOn, MdAccessTime } from "react-icons/md"
 
 export default function ContactPage() {
   return (
@@ -25,7 +25,7 @@ export default function ContactPage() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <Phone size={24} className="text-primary flex-shrink-0 mt-1" />
+                  <MdPhone size={24} className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold">Phone</h3>
                     <p className="text-gray-600">+254 725 674144</p>
@@ -33,7 +33,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Mail size={24} className="text-primary flex-shrink-0 mt-1" />
+                  <MdMail size={24} className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold">Email</h3>
                     <p className="text-gray-600">info@omnipowersolutions.co.ke</p>
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <MapPin size={24} className="text-primary flex-shrink-0 mt-1" />
+                  <MdLocationOn size={24} className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold">Address</h3>
                     <p className="text-gray-600">Nairobi, Kenya</p>
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Clock size={24} className="text-primary flex-shrink-0 mt-1" />
+                  <MdAccessTime size={24} className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold">Business Hours</h3>
                     <p className="text-gray-600">

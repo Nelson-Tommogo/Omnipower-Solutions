@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 
 export default function AboutPage() {
   return (

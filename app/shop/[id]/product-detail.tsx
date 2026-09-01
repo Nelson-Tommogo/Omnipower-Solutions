@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { ShoppingCart, Check, ChevronDown, ChevronUp } from "lucide-react"
+import { MdShoppingCart, MdCheck, MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
 import { useCart } from "@/src/components/cart-provider"
@@ -83,11 +83,11 @@ export function ProductDetail({ product }: ProductDetailProps) {
               disabled={quantity <= 1}
               className="h-10 w-10"
             >
-              <ChevronDown size={16} />
+              <MdKeyboardArrowDown size={16} />
             </Button>
             <span className="w-12 text-center">{quantity}</span>
             <Button variant="outline" size="icon" onClick={incrementQuantity} className="h-10 w-10">
-              <ChevronUp size={16} />
+              <MdKeyboardArrowUp size={16} />
             </Button>
           </div>
         </div>
@@ -95,12 +95,12 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <Button size="lg" onClick={handleAddToCart} className="w-full mb-8" disabled={isAdded}>
           {isAdded ? (
             <>
-              <Check size={16} className="mr-2" />
+              <MdCheck size={16} className="mr-2" />
               Added to Cart
             </>
           ) : (
             <>
-              <ShoppingCart size={16} className="mr-2" />
+              <MdShoppingCart size={16} className="mr-2" />
               Add to Cart
             </>
           )}
@@ -121,7 +121,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <ul className="space-y-2">
               {product.features.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2">
-                  <Check size={16} className="text-primary mt-1 flex-shrink-0" />
+                  <MdCheck size={16} className="text-primary mt-1 flex-shrink-0" />
                   <span>{feature}</span>
                 </li>
               ))}

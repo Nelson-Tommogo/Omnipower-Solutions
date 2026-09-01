@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { MessageCircle } from "lucide-react"
+import { MdChat } from "react-icons/md"
 
 export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false)
@@ -26,7 +26,7 @@ export function WhatsAppButton() {
           </span>
         )}
         <div className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
-          <MessageCircle size={24} />
+          <MdChat size={24} />
         </div>
       </a>
     </div>

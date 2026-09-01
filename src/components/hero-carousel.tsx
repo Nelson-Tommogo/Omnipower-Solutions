@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { cn } from "@/src/lib/utils"
 import Link from "next/link"
@@ -97,14 +97,14 @@ export function HeroCarousel() {
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={24} />
+        <MdChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
         aria-label="Next slide"
       >
-        <ChevronRight size={24} />
+        <MdChevronRight size={24} />
       </button>
 
       {/* Indicators */}
