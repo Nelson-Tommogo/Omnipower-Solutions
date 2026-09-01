@@ -5,6 +5,9 @@ import type React from "react"
 import { useState } from "react"
 import { MenuItem, TextField } from "@mui/material"
 import { Button } from "@/src/components/ui/button"
+import { Input } from "@/src/components/ui/input"
+import { Label } from "@/src/components/ui/label"
+import { Textarea } from "@/src/components/ui/textarea"
 
 export function ContactForm() {
   const [formState, setFormState] = useState({
@@ -95,21 +98,23 @@ export function ContactForm() {
         </div>
 
         <div>
-          <Label htmlFor="service">Service of Interest</Label>
-          <Select value={formState.service} onValueChange={handleServiceChange}>
-            <SelectTrigger id="service" className="mt-1">
-              <SelectValue placeholder="Select a service" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="cctv">CCTV Installation</SelectItem>
-              <SelectItem value="wiring">Electrical Wiring</SelectItem>
-              <SelectItem value="solar">Solar Installation</SelectItem>
-              <SelectItem value="fences">Electric Fences</SelectItem>
-              <SelectItem value="gates">Automated Gates</SelectItem>
-              <SelectItem value="home">Home Automation</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-            </SelectContent>
-          </Select>
+          <TextField
+            select
+            fullWidth
+            label="Service of Interest"
+            value={formState.service}
+            onChange={(event) => handleServiceChange(String(event.target.value))}
+            size="small"
+            className="mt-1"
+          >
+            <MenuItem value="cctv">CCTV Installation</MenuItem>
+            <MenuItem value="wiring">Electrical Wiring</MenuItem>
+            <MenuItem value="solar">Solar Installation</MenuItem>
+            <MenuItem value="fences">Electric Fences</MenuItem>
+            <MenuItem value="gates">Automated Gates</MenuItem>
+            <MenuItem value="home">Home Automation</MenuItem>
+            <MenuItem value="other">Other</MenuItem>
+          </TextField>
         </div>
 
         <div>
