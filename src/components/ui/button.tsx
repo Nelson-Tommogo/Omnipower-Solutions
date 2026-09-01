@@ -1,56 +1,83 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Button as MuiButton, type ButtonProps as MuiButtonProps } from "@mui/material"
 
 import { cn } from "@/src/lib/utils"
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
+type ButtonSize = "default" | "sm" | "lg" | "icon"
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends Omit<MuiButtonProps, "variant" | "size"> {
+  variant?: ButtonVariant
+  size?: ButtonSize
   asChild?: boolean
 }
 
+const mapVariant = (variant: ButtonVariant = "default") => {
+  switch (variant) {
+    case "destructive":
+      return "contained"
+    case "outline":
+      return "outlined"
+    case "secondary":
+      return "contained"
+    case "ghost":
+      return "text"
+    case "link":
+      return "text"
+    default:
+      return "contained"
+  }
+}
+
+const mapSize = (size: ButtonSize = "default") => {
+  switch (size) {
+    case "sm":
+      return "small"
+    case "lg":
+      return "large"
+    case "icon":
+      return "small"
+    default:
+      return "medium"
+  }
+}
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, variant = "default", size = "default", asChild = false, children, ...props }, ref) => {
+    if (asChild && React.isValidElement(children)) {
+      const child = children as React.ReactElement<{ className?: string }>
+      return React.cloneElement(child, {
+        className: cn(child.props.className, className),
+        ...props,
+      })
+    }
+
+    const mappedVariant = mapVariant(variant)
+    const mappedSize = mapSize(size)
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <MuiButton
         ref={ref}
+        variant={mappedVariant}
+        size={mappedSize}
+        className={cn(
+          variant === "outline" && "border border-slate-300 bg-white text-slate-900 hover:bg-slate-50",
+          variant === "secondary" && "bg-[#0f5132] text-white hover:bg-[#0b3d28]",
+          variant === "ghost" && "bg-transparent text-slate-700 hover:bg-slate-100",
+          variant === "link" && "bg-transparent text-[#d71a1a] hover:bg-transparent underline-offset-4 hover:underline",
+          variant === "destructive" && "bg-[#d32f2f] text-white hover:bg-[#b71c1c]",
+          size === "icon" && "min-width: 40px; w-10 h-10 p-0",
+          className,
+        )}
         {...props}
-      />
+      >
+        {children}
+      </MuiButton>
     )
   }
 )
+
 Button.displayName = "Button"
 
-export { Button, buttonVariants }
+export { Button }
