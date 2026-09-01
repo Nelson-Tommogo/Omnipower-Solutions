@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { MdChevronLeft, MdChevronRight, MdStar } from "react-icons/md"
 import { cn } from "@/src/lib/utils"
 
 const testimonials = [
@@ -63,7 +63,7 @@ export function Testimonials() {
                   <div className="bg-white p-8 rounded-lg shadow-md text-center">
                     <div className="flex justify-center mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <Star
+                        <MdStar
                           key={i}
                           size={20}
                           className={cn(i < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300")}
@@ -87,14 +87,14 @@ export function Testimonials() {
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white shadow-md hover:bg-gray-100 p-2 rounded-full transition-colors"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={24} />
+            <MdChevronLeft size={24} />
           </button>
           <button
             onClick={nextTestimonial}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white shadow-md hover:bg-gray-100 p-2 rounded-full transition-colors"
             aria-label="Next testimonial"
           >
-            <ChevronRight size={24} />
+            <MdChevronRight size={24} />
           </button>
 
           {/* Indicators */}

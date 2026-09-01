@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart } from "lucide-react"
+import { MdShoppingCart } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { useCart } from "./cart-provider"
 import cctv from "./images/hdcctv.jpg"
@@ -84,7 +84,7 @@ export function FeaturedProducts() {
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold">KSh {product.price.toLocaleString()}</span>
                   <Button size="sm" onClick={() => handleAddToCart(product)} className="flex items-center gap-1">
-                    <ShoppingCart size={16} />
+                    <MdShoppingCart size={16} />
                     Add
                   </Button>
                 </div>

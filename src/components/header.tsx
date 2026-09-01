@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { Phone, Clock, Mail, ShoppingCart, Menu, X } from "lucide-react"
+import { MdPhone, MdAccessTime, MdMail, MdShoppingCart, MdMenu, MdClose } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { useCart } from "./cart-provider"
 import { cn } from "@/src/lib/utils"
@@ -69,11 +69,11 @@ export function Header() {
         <div className="container flex justify-between items-center">
           <div className="flex gap-8 text-sm">
             <a href="tel:+254725674144" className="flex items-center gap-2 hover:text-white/80 transition-colors">
-              <Phone size={16} />
+              <MdPhone size={16} />
               <span>+254 725 674144 / +254 759 735505</span>
             </a>
             <div className="flex items-center gap-2">
-              <Clock size={16} />
+              <MdAccessTime size={16} />
               <span>
                 Mon - Fri: 9:00 - 19:00
                 <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-white/20">
@@ -85,7 +85,7 @@ export function Header() {
               href="mailto:info@omnipowersolutions.co.ke"
               className="flex items-center gap-2 hover:text-white/80 transition-colors"
             >
-              <Mail size={16} />
+              <MdMail size={16} />
               <span>info@omnipowersolutions.co.ke</span>
             </a>
           </div>
@@ -178,7 +178,7 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X /> : <Menu />}
+              {isMobileMenuOpen ? <MdClose /> : <MdMenu />}
             </Button>
           </div>
         </div>

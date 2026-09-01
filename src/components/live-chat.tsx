@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { MessageCircle, X, Send, Loader2 } from "lucide-react"
+import { MdChat, MdClose, MdSend, MdHourglassTop } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import Image from "next/image"
@@ -69,7 +69,7 @@ export function LiveChat() {
         className="fixed bottom-6 right-6 bg-primary text-white rounded-full p-4 shadow-lg hover:bg-primary/90 transition-all z-50"
         aria-label="Open chat"
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <MdClose size={24} /> : <MdChat size={24} />}
       </button>
 
       {/* Chat window */}
@@ -138,7 +138,7 @@ export function LiveChat() {
               className="flex-1"
             />
             <Button type="submit" size="icon" disabled={!newMessage.trim() || isTyping}>
-              {isTyping ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+              {isTyping ? <MdHourglassTop className="h-4 w-4 animate-spin" /> : <MdSend className="h-4 w-4" />}
             </Button>
           </form>
         </div>

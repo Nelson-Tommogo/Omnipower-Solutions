@@ -1,6 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import {
+  MdPhone,
+  MdMail,
+  MdLocationOn,
+  MdAccessTime,
+  MdFacebook,
+  MdX,
+  MdInstagram,
+  MdLinkedin,
+} from "react-icons/md"
 
 export function Footer() {
   return (
@@ -25,28 +34,28 @@ export function Footer() {
                 className="hover:text-primary transition-colors"
                 aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <MdFacebook size={20} />
               </Link>
               <Link
                 href="https://x.com/omnipowerkenya"
                 className="hover:text-primary transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter size={20} />
+                <MdX size={20} />
               </Link>
               <Link
                 href="https://www.instagram.com"
                 className="hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <MdInstagram size={20} />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/omnipower-solution-kenya/?"
                 className="hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <MdLinkedin size={20} />
               </Link>
               <Link
                 href="https://www.tiktok.com/@evanceokoth0"
@@ -136,7 +145,7 @@ export function Footer() {
             <h3 className="text-xl font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex gap-3">
-                <Phone size={20} className="flex-shrink-0 text-primary" />
+                <MdPhone size={20} className="flex-shrink-0 text-primary" />
                 <div>
                   <span>+254 725 674144</span>
                   <br />
@@ -144,15 +153,15 @@ export function Footer() {
                 </div>
               </li>
               <li className="flex gap-3">
-                <Mail size={20} className="flex-shrink-0 text-primary" />
+                <MdMail size={20} className="flex-shrink-0 text-primary" />
                 <span>info@omnipowersolutions.co.ke</span>
               </li>
               <li className="flex gap-3">
-                <MapPin size={20} className="flex-shrink-0 text-primary" />
+                <MdLocationOn size={20} className="flex-shrink-0 text-primary" />
                 <span>Nairobi, Kenya</span>
               </li>
               <li className="flex gap-3">
-                <Clock size={20} className="flex-shrink-0 text-primary" />
+                <MdAccessTime size={20} className="flex-shrink-0 text-primary" />
                 <span>
                   Mon - Fri: 9:00 - 19:00
                   <br />
