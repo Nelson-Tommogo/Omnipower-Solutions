@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 import solar from "../images/solarpanelkit.jpg"
 import panel from "../images/panel.jpeg"
 
@@ -63,7 +63,7 @@ export default function SolarInstallationPage() {
               <h2 className="text-3xl font-bold mb-6">Our Solar Installation Services 🛠️</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Residential Solar Systems</h3>
                     <p className="text-gray-600">
@@ -73,7 +73,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Commercial Solar Systems</h3>
                     <p className="text-gray-600">
@@ -83,7 +83,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Off-Grid Solar Solutions</h3>
                     <p className="text-gray-600">
@@ -93,7 +93,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Grid-Tied Solar Systems</h3>
                     <p className="text-gray-600">
@@ -111,7 +111,7 @@ export default function SolarInstallationPage() {
               <h2 className="text-3xl font-bold mb-6">Additional Solar Services ✨</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Solar Battery Storage</h3>
                     <p className="text-gray-600">
@@ -121,7 +121,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Solar Water Heating</h3>
                     <p className="text-gray-600">
@@ -131,7 +131,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Solar System Maintenance</h3>
                     <p className="text-gray-600">
@@ -140,7 +140,7 @@ export default function SolarInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Solar System Upgrades</h3>
                     <p className="text-gray-600">

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 import wiring from "../images/wiring.jpeg"
 import wire from "../images/wiring.jpg"
 
@@ -62,7 +62,7 @@ export default function ElectricalWiringPage() {
               <h2 className="text-3xl font-bold mb-6">Our Electrical Wiring Services 🛠️</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Residential Wiring</h3>
                     <p className="text-gray-600">
@@ -72,7 +72,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Commercial Wiring</h3>
                     <p className="text-gray-600">
@@ -82,7 +82,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Lighting Installation</h3>
                     <p className="text-gray-600">
@@ -92,7 +92,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Circuit Breaker Installation</h3>
                     <p className="text-gray-600">
@@ -110,7 +110,7 @@ export default function ElectricalWiringPage() {
               <h2 className="text-3xl font-bold mb-6">Specialized Electrical Services ✨</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Smart Home Wiring</h3>
                     <p className="text-gray-600">
@@ -120,7 +120,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Generator Installation</h3>
                     <p className="text-gray-600">
@@ -130,7 +130,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Electrical Troubleshooting</h3>
                     <p className="text-gray-600">
@@ -140,7 +140,7 @@ export default function ElectricalWiringPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Electrical Inspections</h3>
                     <p className="text-gray-600">

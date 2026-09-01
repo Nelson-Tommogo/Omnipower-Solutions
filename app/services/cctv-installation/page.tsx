@@ -65,7 +65,7 @@ export default function CCTVInstallationPage() {
               <h2 className="text-3xl font-bold mb-6">Our CCTV Installation Services</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Residential CCTV Systems</h3>
                     <p className="text-gray-600">
@@ -75,7 +75,7 @@ export default function CCTVInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Commercial CCTV Systems</h3>
                     <p className="text-gray-600">
@@ -85,7 +85,7 @@ export default function CCTVInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">HD & IP Camera Installation</h3>
                     <p className="text-gray-600">
@@ -95,7 +95,7 @@ export default function CCTVInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">CCTV Maintenance & Repairs</h3>
                     <p className="text-gray-600">
@@ -113,7 +113,7 @@ export default function CCTVInstallationPage() {
               <h2 className="text-3xl font-bold mb-6">Advanced CCTV Features</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Night Vision Capabilities</h3>
                     <p className="text-gray-600">
@@ -123,7 +123,7 @@ export default function CCTVInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Remote Monitoring</h3>
                     <p className="text-gray-600">
@@ -133,7 +133,7 @@ export default function CCTVInstallationPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Motion Detection Alerts</h3>
                     <p className="text-gray-600">

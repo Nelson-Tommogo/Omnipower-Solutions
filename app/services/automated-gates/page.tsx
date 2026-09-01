@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 import gates from "../images/automatedgates.jpg"
 import dooors from "../images/hdsmartdoorlock.jpg"
 
@@ -63,7 +63,7 @@ export default function AutomatedGatesPage() {
               <h2 className="text-3xl font-bold mb-6">Our Automated Gate Services 🛠️</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Sliding Gate Automation</h3>
                     <p className="text-gray-600">
@@ -73,7 +73,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Swing Gate Automation</h3>
                     <p className="text-gray-600">
@@ -83,7 +83,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Barrier Gate Systems</h3>
                     <p className="text-gray-600">
@@ -92,7 +92,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Custom Gate Fabrication</h3>
                     <p className="text-gray-600">
@@ -110,7 +110,7 @@ export default function AutomatedGatesPage() {
               <h2 className="text-3xl font-bold mb-6">Access Control Options ✨</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Remote Control Access</h3>
                     <p className="text-gray-600">
@@ -119,7 +119,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Keypad Entry Systems</h3>
                     <p className="text-gray-600">
@@ -128,7 +128,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Smartphone Control</h3>
                     <p className="text-gray-600">
@@ -138,7 +138,7 @@ export default function AutomatedGatesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Intercom & Video Systems</h3>
                     <p className="text-gray-600">

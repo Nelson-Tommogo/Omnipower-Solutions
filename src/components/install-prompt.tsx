@@ -61,7 +61,7 @@ export function InstallPrompt() {
         <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4">
           <div className="flex items-start justify-between mb-3">
             <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-              <Download className="w-5 h-5 text-blue-600" />
+              <MdDownload className="w-5 h-5 text-blue-600" />
               Install Omnipower
             </h3>
             <button
@@ -69,7 +69,7 @@ export function InstallPrompt() {
               className="text-gray-400 hover:text-gray-600 transition"
               aria-label="Close"
             >
-              <X className="w-5 h-5" />
+              <MdClose className="w-5 h-5" />
             </button>
           </div>
           <p className="text-sm text-gray-600 mb-4">
@@ -90,7 +90,7 @@ export function InstallPrompt() {
         <div className="bg-white border border-blue-200 rounded-lg shadow-lg p-4 bg-gradient-to-r from-blue-50 to-white">
           <div className="flex items-start justify-between mb-3">
             <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-              <Download className="w-5 h-5 text-blue-600" />
+              <MdDownload className="w-5 h-5 text-blue-600" />
               Install Omnipower
             </h3>
             <button
@@ -98,7 +98,7 @@ export function InstallPrompt() {
               className="text-gray-400 hover:text-gray-600 transition"
               aria-label="Close"
             >
-              <X className="w-5 h-5" />
+              <MdClose className="w-5 h-5" />
             </button>
           </div>
           <p className="text-sm text-gray-600 mb-4">

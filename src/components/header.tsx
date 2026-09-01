@@ -150,7 +150,7 @@ export function Header() {
               Contact
             </Link>
             <Link href="/cart" className="relative">
-              <ShoppingCart />
+              <MdShoppingCart />
               {isClient && totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {totalItems}
@@ -165,7 +165,7 @@ export function Header() {
           {/* Mobile menu button */}
           <div className="flex items-center gap-4 md:hidden">
             <Link href="/cart" className="relative">
-              <ShoppingCart />
+              <MdShoppingCart />
               {isClient && totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {totalItems}

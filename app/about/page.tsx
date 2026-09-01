@@ -61,7 +61,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Certified Professionals</h3>
               <p className="text-gray-600">
                 Our team consists of certified technicians with years of experience in electrical and electronic
@@ -70,7 +70,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Quality Products</h3>
               <p className="text-gray-600">
                 We only use high-quality products and materials that meet international standards for safety and
@@ -79,7 +79,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Customer Satisfaction</h3>
               <p className="text-gray-600">
                 We prioritize customer satisfaction and strive to exceed expectations with every project we undertake.
@@ -87,7 +87,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Competitive Pricing</h3>
               <p className="text-gray-600">
                 We offer competitive pricing without compromising on quality, ensuring you get the best value for your
@@ -96,7 +96,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Warranty & Support</h3>
               <p className="text-gray-600">
                 All our installations come with warranty and ongoing technical support to ensure your systems function
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <CheckCircle2 size={48} className="text-primary mb-4" />
+              <MdCheckCircle size={48} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Timely Delivery</h3>
               <p className="text-gray-600">
                 We understand the importance of timely completion and strive to deliver projects within the agreed

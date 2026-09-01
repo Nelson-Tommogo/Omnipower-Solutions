@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart, Filter, Search } from "lucide-react"
+import { MdShoppingCart, MdFilterList, MdSearch } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import { Checkbox } from "@/src/components/ui/checkbox"
@@ -179,12 +179,12 @@ export function ShopContent() {
           onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
           className="flex items-center gap-2"
         >
-          <Filter size={16} />
+          <MdFilterList size={16} />
           Filters
         </Button>
 
         <div className="relative">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <MdSearch size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <Input
             type="search"
             placeholder="Search products..."
@@ -217,7 +217,7 @@ export function ShopContent() {
           <div className="mt-8 hidden md:block">
             <h2 className="text-lg font-bold mb-4">Search</h2>
             <div className="relative">
-              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <MdSearch size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -260,7 +260,7 @@ export function ShopContent() {
                         }}
                         className="flex items-center gap-1"
                       >
-                        <ShoppingCart size={16} />
+                        <MdShoppingCart size={16} />
                         Add
                       </Button>
                     </div>

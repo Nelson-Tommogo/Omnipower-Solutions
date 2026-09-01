@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { MdCheckCircle } from "react-icons/md"
 import fence from "../images/electricfence.jpeg"
 import electricfence from "../images/electricfence.jpg"
 import electric from "../images/electricfencee.jpg"
@@ -64,7 +64,7 @@ export default function ElectricFencesPage() {
               <h2 className="text-3xl font-bold mb-6">Our Electric Fence Services 🛠️</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Residential Electric Fences</h3>
                     <p className="text-gray-600">
@@ -74,7 +74,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Commercial Electric Fences</h3>
                     <p className="text-gray-600">
@@ -84,7 +84,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Industrial Electric Fences</h3>
                     <p className="text-gray-600">
@@ -94,7 +94,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Farm & Agricultural Fencing</h3>
                     <p className="text-gray-600">
@@ -112,7 +112,7 @@ export default function ElectricFencesPage() {
               <h2 className="text-3xl font-bold mb-6">Additional Security Services ✨</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Electric Fence Maintenance</h3>
                     <p className="text-gray-600">
@@ -122,7 +122,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Electric Fence Repairs</h3>
                     <p className="text-gray-600">
@@ -132,7 +132,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Integrated Security Systems</h3>
                     <p className="text-gray-600">
@@ -142,7 +142,7 @@ export default function ElectricFencesPage() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" />
+                  <MdCheckCircle className="text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-xl mb-1">Security Assessments</h3>
                     <p className="text-gray-600">
