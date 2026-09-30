@@ -3,15 +3,19 @@
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from "@mui/material/Drawer"
 import { forwardRef } from "react"
 
-export type DrawerProps = MuiDrawerProps
+export interface DrawerProps extends MuiDrawerProps {
+  width?: number
+}
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  function Drawer({ slotProps, ...props }, ref) {
+  function Drawer({ width = 280, slotProps, ...props }, ref) {
     return (
       <MuiDrawer
         ref={ref}
         slotProps={{
-          paper: { sx: { width: 260 } },
+          paper: {
+            sx: { width },
+          },
           ...slotProps,
         }}
         {...props}
