@@ -21,7 +21,16 @@ export const ListItemButton = forwardRef<
   return (
     <MuiListItemButton
       ref={ref}
-      sx={{ py: 1.25, fontWeight: 500, ...sx }}
+      sx={{
+        py: 1.25,
+        fontWeight: 500,
+        "&:hover": { backgroundColor: "rgba(244, 81, 30, 0.06)" },
+        "&.Mui-selected": {
+          backgroundColor: "rgba(244, 81, 30, 0.10)",
+          color: "primary.main",
+        },
+        ...sx,
+      }}
       {...(props as any)}
     />
   )

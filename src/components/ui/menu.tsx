@@ -5,25 +5,6 @@ import MuiMenuItem from "@mui/material/MenuItem"
 import { forwardRef, ElementType } from "react"
 import { SxProps, Theme } from "@mui/material/styles"
 
-export type MenuItemProps<C extends ElementType = "li"> = {
-  component?: C
-  sx?: SxProps<Theme>
-} & Omit<React.ComponentPropsWithoutRef<C>, "component" | "sx">
-
-export const MenuItem = forwardRef<
-  HTMLLIElement,
-  MenuItemProps<ElementType>
->(function MenuItem({ sx, ...props }, ref) {
-  return (
-    <MuiMenuItem
-      ref={ref}
-      sx={{ fontSize: "0.95rem", py: 1.25, ...sx }}
-      {...(props as any)}
-    />
-  )
-})
-
-// Menu unchanged
 export type MenuProps = MuiMenuProps
 
 export const Menu = forwardRef<HTMLDivElement, MenuProps>(
@@ -41,7 +22,7 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(
               borderRadius: 2,
               border: "1px solid",
               borderColor: "divider",
-              boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+              boxShadow: "0 8px 24px rgba(92, 20, 20, 0.08)", // maroon-tinted shadow
             },
           },
           ...slotProps,
@@ -51,3 +32,30 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(
     )
   }
 )
+
+export type MenuItemProps<C extends ElementType = "li"> = {
+  component?: C
+  sx?: SxProps<Theme>
+} & Omit<React.ComponentPropsWithoutRef<C>, "component" | "sx">
+
+export const MenuItem = forwardRef<
+  HTMLLIElement,
+  MenuItemProps<ElementType>
+>(function MenuItem({ sx, ...props }, ref) {
+  return (
+    <MuiMenuItem
+      ref={ref}
+      sx={{
+        fontSize: "0.95rem",
+        py: 1.25,
+        "&:hover": { backgroundColor: "rgba(244, 81, 30, 0.06)" },
+        "&.Mui-selected": {
+          backgroundColor: "rgba(244, 81, 30, 0.10)",
+          color: "primary.main",
+        },
+        ...sx,
+      }}
+      {...(props as any)}
+    />
+  )
+})

@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useMediaQuery, useTheme } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
@@ -51,14 +51,14 @@ export function Header() {
   return (
     <AppBar>
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: 72, justifyContent: "space-between" }}>
+        <Toolbar disableGutters sx={{ minHeight: 64, justifyContent: "space-between" }}>
           <Box component={Link} href="/" sx={{ display: "flex", alignItems: "center" }}>
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
               alt="Omnipower Solutions"
               width={200}
               height={60}
-              className="h-14 w-auto"
+              className="h-10 w-auto"
               priority
             />
           </Box>
@@ -80,7 +80,7 @@ export function Header() {
               <Button
                 variant="nav"
                 className={isCompanyActive ? "active" : ""}
-                onClick={(e) => setCompanyAnchor(e.currentTarget)}
+                onClick={(e: { currentTarget: SetStateAction<HTMLElement | null> }) => setCompanyAnchor(e.currentTarget)}
                 endIcon={
                   <ExpandMoreIcon
                     sx={{
