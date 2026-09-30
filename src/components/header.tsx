@@ -2,258 +2,257 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { usePathname } from "next/navigation"
-import { MdPhone, MdAccessTime, MdMail, MdShoppingCart, MdMenu, MdClose } from "react-icons/md"
-import { Button } from "@/src/components/ui/button"
-import { useCart } from "./cart-provider"
-import { cn } from "@/src/lib/utils"
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Container,
+  Menu,
+  MenuItem,
+  Collapse,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+import MenuIcon from "@mui/icons-material/Menu"
+import CloseIcon from "@mui/icons-material/Close"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import ExpandLessIcon from "@mui/icons-material/ExpandLess"
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Shop", href: "/shop" },
+]
+
+const companyItems = [
+  { name: "About us", href: "/about" },
+  { name: "Contact", href: "/contact" },
+]
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isOpen, setIsOpen] = useState(true)
-  const [isClient, setIsClient] = useState(false)
+  const [companyAnchor, setCompanyAnchor] = useState<null | HTMLElement>(null)
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false)
   const pathname = usePathname()
-  const { totalItems } = useCart()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
-  // Set isClient to true once the component is mounted
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const handleDrawerToggle = () => setIsMobileMenuOpen((v) => !v)
+  const closeDrawer = () => setIsMobileMenuOpen(false)
 
-  useEffect(() => {
-    if (!isClient) return
+  // Desktop dropdown handlers
+  const handleCompanyOpen = (e: React.MouseEvent<HTMLElement>) =>
+    setCompanyAnchor(e.currentTarget)
+  const handleCompanyClose = () => setCompanyAnchor(null)
 
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [isClient])
-
-  // Check if the business is currently open
-  useEffect(() => {
-    if (!isClient) return
-
-    const checkBusinessHours = () => {
-      const now = new Date()
-      const day = now.getDay() // 0 is Sunday, 6 is Saturday
-      const hours = now.getHours()
-
-      // Closed on weekends (Saturday and Sunday)
-      if (day === 0 || day === 6) {
-        setIsOpen(false)
-        return
-      }
-
-      // Open Monday-Friday from 9:00 to 19:00
-      if (hours >= 9 && hours < 19) {
-        setIsOpen(true)
-      } else {
-        setIsOpen(false)
-      }
-    }
-
-    checkBusinessHours()
-    // Update every minute
-    const interval = setInterval(checkBusinessHours, 60000)
-    return () => clearInterval(interval)
-  }, [isClient])
+  const isCompanyActive = companyItems.some((item) => pathname === item.href)
 
   return (
-    <header className="w-full">
-      {/* Top bar - hidden on mobile */}
-      <div className="bg-primary text-white py-2 hidden md:block">
-        <div className="container flex justify-between items-center">
-          <div className="flex gap-8 text-sm">
-            <a href="tel:+254725674144" className="flex items-center gap-2 hover:text-white/80 transition-colors">
-              <MdPhone size={16} />
-              <span>+254 725 674144 / +254 759 735505</span>
-            </a>
-            <div className="flex items-center gap-2">
-              <MdAccessTime size={16} />
-              <span>
-                Mon - Fri: 9:00 - 19:00
-                <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-white/20">
-                  {isOpen ? "Open Now" : "Closed Now"}
-                </span>
-              </span>
-            </div>
-            <a
-              href="mailto:info@omnipowersolutions.co.ke"
-              className="flex items-center gap-2 hover:text-white/80 transition-colors"
-            >
-              <MdMail size={16} />
-              <span>info@omnipowersolutions.co.ke</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation */}
-      <div
-        className={cn("py-4 transition-all duration-300 bg-white", isScrolled && "shadow-md py-2 sticky top-0 z-50")}
-      >
-        <div className="container flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
+    <AppBar
+      position="sticky"
+      elevation={0}
+      sx={{
+        backgroundColor: "background.paper",
+        color: "text.primary",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+      }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters sx={{ minHeight: 72, justifyContent: "space-between" }}>
+          {/* Logo */}
+          <Box
+            component={Link}
+            href="/"
+            sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+          >
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
               alt="Omnipower Solutions"
               width={200}
               height={60}
-              className="h-12 w-auto"
+              className="h-14 w-auto"
               priority
             />
-          </Link>
+          </Box>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              className={cn("font-medium hover:text-primary transition-colors", pathname === "/" && "text-primary")}
-            >
-              Home
-            </Link>
-            <Link
-              href="/services"
-              className={cn(
-                "font-medium hover:text-primary transition-colors",
-                pathname === "/services" && "text-primary",
-              )}
-            >
-              Services
-            </Link>
-            <Link
-              href="/shop"
-              className={cn("font-medium hover:text-primary transition-colors", pathname === "/shop" && "text-primary")}
-            >
-              Shop
-            </Link>
-            <Link
-              href="/about"
-              className={cn(
-                "font-medium hover:text-primary transition-colors",
-                pathname === "/about" && "text-primary",
-              )}
-            >
-              About us
-            </Link>
-            <Link
-              href="/contact"
-              className={cn(
-                "font-medium hover:text-primary transition-colors",
-                pathname === "/contact" && "text-primary",
-              )}
-            >
-              Contact
-            </Link>
-            <Link href="/cart" className="relative">
-              <MdShoppingCart />
-              {isClient && totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-            <Button asChild>
-              <Link href="/contact">Free Quote</Link>
-            </Button>
-          </nav>
+          {!isMobile && (
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              {navItems.map((item) => {
+                const isActive = pathname === item.href
+                return (
+                  <Button
+                    key={item.name}
+                    component={Link}
+                    href={item.href}
+                    disableRipple
+                    sx={{
+                      color: isActive ? "primary.main" : "text.primary",
+                      fontWeight: 500,
+                      textTransform: "none",
+                      fontSize: "0.95rem",
+                      px: 2,
+                      "&:hover": {
+                        color: "primary.main",
+                        backgroundColor: "transparent",
+                      },
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                )
+              })}
 
-          {/* Mobile menu button */}
-          <div className="flex items-center gap-4 md:hidden">
-            <Link href="/cart" className="relative">
-              <MdShoppingCart />
-              {isClient && totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <MdClose /> : <MdMenu />}
-            </Button>
-          </div>
-        </div>
-      </div>
+              {/* Company dropdown */}
+              <Button
+                disableRipple
+                onClick={handleCompanyOpen}
+                endIcon={
+                  <ExpandMoreIcon
+                    sx={{
+                      transition: "transform 0.2s",
+                      transform: companyAnchor ? "rotate(180deg)" : "rotate(0)",
+                    }}
+                  />
+                }
+                sx={{
+                  color: isCompanyActive ? "primary.main" : "text.primary",
+                  fontWeight: 500,
+                  textTransform: "none",
+                  fontSize: "0.95rem",
+                  px: 2,
+                  "&:hover": {
+                    color: "primary.main",
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
+                Company
+              </Button>
+              <Menu
+                anchorEl={companyAnchor}
+                open={Boolean(companyAnchor)}
+                onClose={handleCompanyClose}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+                slotProps={{
+                  paper: {
+                    sx: {
+                      mt: 1,
+                      minWidth: 180,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                    },
+                  },
+                }}
+              >
+                {companyItems.map((item) => (
+                  <MenuItem
+                    key={item.name}
+                    component={Link}
+                    href={item.href}
+                    onClick={handleCompanyClose}
+                    sx={{
+                      fontSize: "0.95rem",
+                      color: pathname === item.href ? "primary.main" : "text.primary",
+                    }}
+                  >
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          )}
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg absolute z-50 w-full">
-          <nav className="container py-4 flex flex-col gap-4">
-            <Link
-              href="/"
-              className={cn(
-                "font-medium hover:text-primary transition-colors py-2 border-b",
-                pathname === "/" && "text-primary",
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
+          {/* Mobile Menu Button */}
+          {isMobile && (
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="toggle menu"
+              onClick={handleDrawerToggle}
             >
-              Home
-            </Link>
-            <Link
-              href="/services"
-              className={cn(
-                "font-medium hover:text-primary transition-colors py-2 border-b",
-                pathname === "/services" && "text-primary",
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
+              {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+          )}
+        </Toolbar>
+      </Container>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={isMobileMenuOpen}
+        onClose={closeDrawer}
+        slotProps={{ paper: { sx: { width: 260 } } }}
+      >
+        <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
+          <IconButton onClick={closeDrawer} aria-label="close menu">
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <List>
+          {navItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <ListItem key={item.name} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  href={item.href}
+                  onClick={closeDrawer}
+                  sx={{
+                    color: isActive ? "primary.main" : "text.primary",
+                    fontWeight: 500,
+                  }}
+                >
+                  <ListItemText primary={item.name} />
+                </ListItemButton>
+              </ListItem>
+            )
+          })}
+
+          {/* Company group in mobile */}
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => setMobileCompanyOpen((v) => !v)}
+              sx={{ fontWeight: 500 }}
             >
-              Services
-            </Link>
-            <Link
-              href="/shop"
-              className={cn(
-                "font-medium hover:text-primary transition-colors py-2 border-b",
-                pathname === "/shop" && "text-primary",
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Shop
-            </Link>
-            <Link
-              href="/about"
-              className={cn(
-                "font-medium hover:text-primary transition-colors py-2 border-b",
-                pathname === "/about" && "text-primary",
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About us
-            </Link>
-            <Link
-              href="/contact"
-              className={cn(
-                "font-medium hover:text-primary transition-colors py-2 border-b",
-                pathname === "/contact" && "text-primary",
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <div className="flex flex-col gap-2 py-2 border-b">
-              <a href="tel:+254725674144" className="flex items-center gap-2 text-sm">
-                <Phone size={16} />
-                <span>+254 725 674144</span>
-              </a>
-              <a href="mailto:info@omnipowersolutions.co.ke" className="flex items-center gap-2 text-sm">
-                <Mail size={16} />
-                <span>info@omnipowersolutions.co.ke</span>
-              </a>
-            </div>
-            <Button asChild className="mt-2">
-              <Link href="/contact">Free Quote</Link>
-            </Button>
-          </nav>
-        </div>
-      )}
-    </header>
+              <ListItemText primary="Company" />
+              {mobileCompanyOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            </ListItemButton>
+          </ListItem>
+          <Collapse in={mobileCompanyOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {companyItems.map((item) => {
+                const isActive = pathname === item.href
+                return (
+                  <ListItem key={item.name} disablePadding>
+                    <ListItemButton
+                      component={Link}
+                      href={item.href}
+                      onClick={closeDrawer}
+                      sx={{
+                        pl: 4,
+                        color: isActive ? "primary.main" : "text.primary",
+                      }}
+                    >
+                      <ListItemText primary={item.name} />
+                    </ListItemButton>
+                  </ListItem>
+                )
+              })}
+            </List>
+          </Collapse>
+        </List>
+      </Drawer>
+    </AppBar>
   )
 }
