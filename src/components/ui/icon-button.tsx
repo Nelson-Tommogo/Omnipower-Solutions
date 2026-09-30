@@ -6,7 +6,14 @@ import { forwardRef } from "react"
 export type IconButtonProps = MuiIconButtonProps
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  function IconButton(props, ref) {
-    return <MuiIconButton ref={ref} color="inherit" {...props} />
+  function IconButton({ sx, ...props }, ref) {
+    return (
+      <MuiIconButton
+        ref={ref}
+        color="inherit"
+        sx={{ borderRadius: 2, ...sx }}
+        {...props}
+      />
+    )
   }
 )
