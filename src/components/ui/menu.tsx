@@ -1,6 +1,7 @@
 "use client"
 
 import MuiMenu, { MenuProps as MuiMenuProps } from "@mui/material/Menu"
+import MuiMenuItem, { MenuItemProps as MuiMenuItemProps } from "@mui/material/MenuItem"
 import { forwardRef } from "react"
 
 export type MenuProps = MuiMenuProps
@@ -17,7 +18,10 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(
             sx: {
               mt: 1,
               minWidth: 180,
-              boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: "divider",
+              boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
             },
           },
           ...slotProps,
@@ -28,4 +32,14 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(
   }
 )
 
-export { default as MenuItem } from "@mui/material/MenuItem"
+export const MenuItem = forwardRef<HTMLLIElement, MuiMenuItemProps>(
+  function MenuItem({ sx, ...props }, ref) {
+    return (
+      <MuiMenuItem
+        ref={ref}
+        sx={{ fontSize: "0.95rem", py: 1.25, ...sx }}
+        {...props}
+      />
+    )
+  }
+)
