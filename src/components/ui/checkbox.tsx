@@ -5,11 +5,20 @@ import { Checkbox as MuiCheckbox, type CheckboxProps as MuiCheckboxProps } from 
 
 import { cn } from "@/src/lib/utils"
 
-const Checkbox = React.forwardRef<HTMLInputElement, MuiCheckboxProps>(
-  ({ className, ...props }, ref) => (
+type CheckboxProps = Omit<MuiCheckboxProps, "onChange"> & {
+  onCheckedChange?: (checked: boolean) => void
+  onChange?: MuiCheckboxProps["onChange"]
+}
+
+const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
+  ({ className, onCheckedChange, onChange, ...props }, ref) => (
     <MuiCheckbox
       ref={ref}
       className={cn(className)}
+      onChange={(event, checked) => {
+        onChange?.(event, checked)
+        onCheckedChange?.(checked)
+      }}
       {...props}
     />
   )
