@@ -121,6 +121,8 @@ export const Button = forwardRef<
       nativeButton={
         asChild || (component != null && component !== "button") ? false : undefined
       }
+      disableElevation
+      disableRipple
       size={resolvedSize}
       sx={{
         fontSize: "0.95rem",
