@@ -1,14 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
-import { SetStateAction, useState } from "react"
+import { useState, type MouseEvent } from "react"
 import { usePathname } from "next/navigation"
-import { useMediaQuery, useTheme } from "@mui/material"
+import { Typography, useMediaQuery, useTheme } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import ExpandLessIcon from "@mui/icons-material/ExpandLess"
+import CallIcon from "@mui/icons-material/Call"
+import EmailIcon from "@mui/icons-material/Email"
+import LocationOnIcon from "@mui/icons-material/LocationOn"
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt"
 
 import { AppBar, Toolbar } from "@/src/components/ui/app-bar"
 import { Box } from "@/src/components/ui/box"
@@ -50,21 +53,122 @@ export function Header() {
 
   return (
     <AppBar>
+      <Box
+        component="section"
+        aria-label="Contact information"
+        sx={{
+          display: { xs: "none", sm: "block" },
+          bgcolor: "maroon.main",
+          color: "maroon.contrastText",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              minHeight: 38,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 2,
+              typography: "body2",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: { sm: 2, md: 3 } }}>
+              <Box
+                component="a"
+                href="tel:+254725674144"
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                <CallIcon fontSize="small" />
+                <Box component="span" sx={{ display: { xs: "none", md: "inline" } }}>
+                  +254 725 674144
+                </Box>
+                <Box component="span" sx={{ display: { xs: "inline", md: "none" } }}>
+                  Call us
+                </Box>
+              </Box>
+              <Box
+                component="a"
+                href="mailto:info@omnipowersolutions.co.ke"
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                <EmailIcon fontSize="small" />
+                <Box component="span" sx={{ display: { xs: "none", sm: "none", md: "inline" } }}>
+                  info@omnipowersolutions.co.ke
+                </Box>
+                <Box component="span" sx={{ display: { xs: "none", sm: "inline", md: "none" } }}>
+                  Email us
+                </Box>
+              </Box>
+            </Box>
+            <Box sx={{ display: { xs: "none", sm: "inline-flex" }, alignItems: "center", gap: 0.75 }}>
+              <LocationOnIcon fontSize="small" />
+              Nairobi, Kenya
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: 64, justifyContent: "space-between" }}>
-          <Box component={Link} href="/" sx={{ display: "flex", alignItems: "center" }}>
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
-              alt="Omnipower Solutions"
-              width={200}
-              height={60}
-              className="h-10 w-auto"
-              priority
-            />
+        <Toolbar
+          disableGutters
+          sx={{ minHeight: { xs: 64, md: 76 }, justifyContent: "space-between", gap: 2 }}
+        >
+          <Box
+            component={Link}
+            href="/"
+            aria-label="Omnipower Solutions home"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              color: "text.primary",
+              textDecoration: "none",
+              flexShrink: 0,
+            }}
+          >
+            <ElectricBoltIcon sx={{ fontSize: 42, color: "primary.main" }} />
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography
+                component="span"
+                sx={{
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  fontWeight: 800,
+                  letterSpacing: "0.035em",
+                  lineHeight: 1.15,
+                }}
+              >
+                OMNIPOWER
+              </Typography>
+              <Typography
+                component="span"
+                sx={{
+                  color: "text.secondary",
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.19em",
+                  lineHeight: 1.2,
+                }}
+              >
+                SOLUTIONS
+              </Typography>
+            </Box>
           </Box>
 
           {!isMobile && (
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.name}
@@ -80,7 +184,9 @@ export function Header() {
               <Button
                 variant="nav"
                 className={isCompanyActive ? "active" : ""}
-                onClick={(e: { currentTarget: SetStateAction<HTMLElement | null> }) => setCompanyAnchor(e.currentTarget)}
+                onClick={(event: MouseEvent<HTMLButtonElement>) =>
+                  setCompanyAnchor(event.currentTarget)
+                }
                 endIcon={
                   <ExpandMoreIcon
                     sx={{
@@ -110,6 +216,15 @@ export function Header() {
                   </MenuItem>
                 ))}
               </Menu>
+
+              <Button
+                variant="solid"
+                component={Link}
+                href="/contact"
+                sx={{ ml: 1, borderRadius: 1 }}
+              >
+                Get a quote
+              </Button>
             </Box>
           )}
 

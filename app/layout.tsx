@@ -2,9 +2,9 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { Providers } from "./providers"
 import { Header } from "@/src/components/header"
 import { Footer } from "@/src/components/footer"
-import { CartProvider } from "@/src/components/cart-provider"
 import { InstallPrompt } from "@/src/components/install-prompt"
 import { ServiceWorkerRegister } from "@/src/components/service-worker-register"
 
@@ -53,13 +53,13 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/placeholder-logo.png" />
       </head>
       <body className={inter.className}>
-        <CartProvider>
+        <Providers>
           <Header />
           <main>{children}</main>
           <Footer />
           <InstallPrompt />
           <ServiceWorkerRegister />
-        </CartProvider>
+        </Providers>
       </body>
     </html>
   )
