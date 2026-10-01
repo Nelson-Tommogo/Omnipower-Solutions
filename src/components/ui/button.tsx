@@ -1,10 +1,26 @@
 "use client"
 
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button"
-import { forwardRef, ElementType } from "react"
+import { Children, forwardRef, ElementType } from "react"
 import { SxProps, Theme } from "@mui/material/styles"
 import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/src/lib/utils"
+
+const ButtonSlot = forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  function ButtonSlot({ children, ...props }, ref) {
+    const childrenArray = Children.toArray(children)
+
+    if (childrenArray.length !== 1) {
+      throw new Error("Button with asChild requires exactly one child.")
+    }
+
+    return (
+      <Slot {...props} ref={ref}>
+        {childrenArray[0]}
+      </Slot>
+    )
+  }
+)
 
 type Variant = "nav" | "solid" | "outline" | "ghost"
 type ButtonSize = "small" | "medium" | "large" | "sm" | "default" | "icon"
@@ -101,7 +117,7 @@ export const Button = forwardRef<
   return (
     <MuiButton
       ref={ref}
-      component={asChild ? Slot : component}
+      component={asChild ? ButtonSlot : component}
       size={resolvedSize}
       sx={{
         fontSize: "0.95rem",
