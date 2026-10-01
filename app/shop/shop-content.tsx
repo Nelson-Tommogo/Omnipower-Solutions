@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import type { MouseEvent } from "react"
 import { MdShoppingCart, MdFilterList, MdSearch } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
@@ -254,7 +255,7 @@ export function ShopContent() {
                       <span className="text-xl font-bold">KSh {product.price.toLocaleString()}</span>
                       <Button
                         size="sm"
-                        onClick={(e) => {
+                        onClick={(e: MouseEvent<HTMLButtonElement>) => {
                           e.preventDefault()
                           handleAddToCart(product)
                         }}

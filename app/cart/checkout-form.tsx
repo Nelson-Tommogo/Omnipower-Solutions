@@ -8,10 +8,10 @@ import { Label } from "@/src/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
 import { Textarea } from "@/src/components/ui/textarea"
 import { useCart } from "@/src/components/cart-provider"
+import { Building, Copy, CreditCard } from "lucide-react"
 import {
   MdCheckCircle,
   MdWarning,
-  MdContentCopy,
   MdCreditCard,
   MdSmartphone,
   MdBusiness,
