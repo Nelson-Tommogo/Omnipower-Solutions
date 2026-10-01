@@ -3,6 +3,7 @@
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button"
 import { forwardRef, ElementType } from "react"
 import { SxProps, Theme } from "@mui/material/styles"
+import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/src/lib/utils"
 
 type Variant = "nav" | "solid" | "outline" | "ghost"
@@ -11,6 +12,7 @@ type ButtonSize = "small" | "medium" | "large" | "sm" | "default" | "icon"
 export type ButtonProps<C extends ElementType = "button"> = {
   variant?: Variant
   size?: ButtonSize
+  asChild?: boolean
   component?: C
   sx?: SxProps<Theme>
 } & Omit<React.ComponentPropsWithoutRef<C>, "component" | "size" | "sx" | "variant">
@@ -87,7 +89,7 @@ const variantStyles: Record<Variant, object> = {
 export const Button = forwardRef<
   HTMLButtonElement,
   ButtonProps<ElementType>
->(function Button({ variant = "solid", size, sx, ...props }, ref) {
+>(function Button({ variant = "solid", size, asChild = false, component, sx, ...props }, ref) {
   const resolvedVariant: Variant = variant ?? "solid"
   const resolvedSize =
     size === "sm" || size === "icon"
@@ -99,13 +101,14 @@ export const Button = forwardRef<
   return (
     <MuiButton
       ref={ref}
+      component={asChild ? Slot : component}
       size={resolvedSize}
       sx={{
         fontSize: "0.95rem",
         ...variantStyles[resolvedVariant],
         ...sx,
       }}
-      {...(props as any)}
+      {...props}
     />
   )
 })
