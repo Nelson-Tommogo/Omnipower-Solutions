@@ -24,10 +24,13 @@ export const ListItemButton = forwardRef<
       sx={{
         py: 1.25,
         fontWeight: 500,
-        "&:hover": { backgroundColor: "rgba(255, 30, 0, 0.08)" },
+        "&:hover": {
+          backgroundColor: "rgba(92, 20, 20, 0.08)",
+          color: "maroon.main",
+        },
         "&.Mui-selected": {
-          backgroundColor: "rgba(255, 30, 0, 0.12)",
-          color: "primary.main",
+          backgroundColor: "rgba(25, 118, 210, 0.1)",
+          color: "secondary.main",
         },
         ...sx,
       }}

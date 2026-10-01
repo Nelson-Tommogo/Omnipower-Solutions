@@ -48,10 +48,10 @@ export const MenuItem = forwardRef<
       sx={{
         fontSize: "0.95rem",
         py: 1.25,
-        "&:hover": { backgroundColor: "rgba(255, 30, 0, 0.08)" },
+        "&:hover": { backgroundColor: "rgba(92, 20, 20, 0.08)" },
         "&.Mui-selected": {
-          backgroundColor: "rgba(255, 30, 0, 0.12)",
-          color: "primary.main",
+          backgroundColor: "rgba(25, 118, 210, 0.1)",
+          color: "secondary.main",
         },
         ...sx,
       }}

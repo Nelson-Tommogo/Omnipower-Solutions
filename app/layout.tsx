@@ -32,7 +32,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#000000",
+  themeColor: "#5C1414",
 }
 
 export default function RootLayout({
@@ -47,9 +47,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Omnipower" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileColor" content="#5C1414" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#5C1414" />
         <link rel="icon" href="/placeholder-logo.png" />
         <link rel="apple-touch-icon" href="/placeholder-logo.png" />
       </head>
