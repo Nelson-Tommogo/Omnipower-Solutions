@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState, type MouseEvent } from "react"
 import { usePathname } from "next/navigation"
-import { Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Typography } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
@@ -41,8 +41,6 @@ export function Header() {
   const [companyAnchor, setCompanyAnchor] = useState<null | HTMLElement>(null)
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false)
   const pathname = usePathname()
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   const closeDrawer = () => setMobileOpen(false)
   const closeCompany = () => setCompanyAnchor(null)
@@ -102,8 +100,7 @@ export function Header() {
             </Box>
           </Box>
 
-          {!isMobile && (
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.name}
@@ -163,14 +160,15 @@ export function Header() {
               >
                 Get a quote
               </Button>
-            </Box>
-          )}
+          </Box>
 
-          {isMobile && (
-            <IconButton onClick={() => setMobileOpen((v) => !v)} aria-label="toggle menu">
-              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-          )}
+          <IconButton
+            sx={{ display: { xs: "inline-flex", md: "none" } }}
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="toggle menu"
+          >
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          </IconButton>
         </Toolbar>
       </Container>
 
