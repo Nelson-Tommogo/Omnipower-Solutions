@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { BRAND_LOGO_SRC } from "@/src/lib/brand"
 import {
   MdPhone,
   MdMail,
@@ -18,7 +19,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
+              src={BRAND_LOGO_SRC}
               alt="Omnipower Solutions"
               width={200}
               height={60}

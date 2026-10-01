@@ -68,19 +68,19 @@ export function buttonVariants({
 
 const variantStyles: Record<Variant, object> = {
   nav: {
-    color: "inherit",
+    color: "text.primary",
     px: 2,
     "&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: "rgba(255, 30, 0, 0.14)",
+      color: "maroon.main",
+      backgroundColor: "rgba(25, 118, 210, 0.08)",
     },
-    "&.active": { color: "primary.main" },
+    "&.active": { color: "secondary.main" },
   },
   solid: {
     backgroundColor: "primary.main",
     color: "primary.contrastText",
     px: 3,
-    "&:hover": { backgroundColor: "primary.dark" },
+    "&:hover": { backgroundColor: "secondary.main" },
   },
   outline: {
     border: "1px solid",

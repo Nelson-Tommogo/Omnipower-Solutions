@@ -1,15 +1,13 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, type MouseEvent } from "react"
 import { usePathname } from "next/navigation"
-import { Typography } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import ExpandLessIcon from "@mui/icons-material/ExpandLess"
-import ElectricBoltIcon from "@mui/icons-material/ElectricBolt"
-
 import { AppBar, Toolbar } from "@/src/components/ui/app-bar"
 import { Box } from "@/src/components/ui/box"
 import { Button } from "@/src/components/ui/button"
@@ -24,6 +22,7 @@ import {
   Collapse,
 } from "@/src/components/ui/list"
 import { Menu, MenuItem } from "@/src/components/ui/menu"
+import { BRAND_LOGO_SRC } from "@/src/lib/brand"
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -49,9 +48,9 @@ export function Header() {
   return (
     <AppBar
       sx={{
-        backgroundColor: "maroon.main",
-        color: "common.white",
-        borderBottomColor: "maroon.dark",
+        backgroundColor: "common.white",
+        color: "text.primary",
+        borderBottomColor: "divider",
       }}
     >
       <Container maxWidth="lg">
@@ -67,37 +66,19 @@ export function Header() {
               display: "flex",
               alignItems: "center",
               gap: 1,
-              color: "common.white",
+              color: "text.primary",
               textDecoration: "none",
               flexShrink: 0,
             }}
           >
-            <ElectricBoltIcon sx={{ fontSize: 42, color: "primary.main" }} />
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Typography
-                component="span"
-                sx={{
-                  fontSize: { xs: "1rem", md: "1.2rem" },
-                  fontWeight: 800,
-                  letterSpacing: "0.035em",
-                  lineHeight: 1.15,
-                }}
-              >
-                OMNIPOWER
-              </Typography>
-              <Typography
-                component="span"
-                sx={{
-                  color: "rgba(255, 255, 255, 0.75)",
-                  fontSize: "0.68rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.19em",
-                  lineHeight: 1.2,
-                }}
-              >
-                SOLUTIONS
-              </Typography>
-            </Box>
+            <Image
+              src={BRAND_LOGO_SRC}
+              alt="Omnipower Solutions"
+              width={200}
+              height={60}
+              priority
+              className="h-12 w-auto max-w-[180px] object-contain"
+            />
           </Box>
 
           <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
