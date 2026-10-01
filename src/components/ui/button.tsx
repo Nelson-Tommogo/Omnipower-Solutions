@@ -118,6 +118,7 @@ export const Button = forwardRef<
     <MuiButton
       ref={ref}
       component={asChild ? ButtonSlot : component}
+      nativeButton={asChild ? false : undefined}
       size={resolvedSize}
       sx={{
         fontSize: "0.95rem",
