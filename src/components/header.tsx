@@ -8,9 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import ExpandLessIcon from "@mui/icons-material/ExpandLess"
-import CallIcon from "@mui/icons-material/Call"
-import EmailIcon from "@mui/icons-material/Email"
-import LocationOnIcon from "@mui/icons-material/LocationOn"
 import ElectricBoltIcon from "@mui/icons-material/ElectricBolt"
 
 import { AppBar, Toolbar } from "@/src/components/ui/app-bar"
@@ -53,74 +50,6 @@ export function Header() {
 
   return (
     <AppBar>
-      <Box
-        component="section"
-        aria-label="Contact information"
-        sx={{
-          display: { xs: "none", sm: "block" },
-          bgcolor: "maroon.main",
-          color: "maroon.contrastText",
-        }}
-      >
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              minHeight: 38,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 2,
-              typography: "body2",
-            }}
-          >
-            <Box sx={{ display: "flex", alignItems: "center", gap: { sm: 2, md: 3 } }}>
-              <Box
-                component="a"
-                href="tel:+254725674144"
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 0.75,
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                <CallIcon fontSize="small" />
-                <Box component="span" sx={{ display: { xs: "none", md: "inline" } }}>
-                  +254 725 674144
-                </Box>
-                <Box component="span" sx={{ display: { xs: "inline", md: "none" } }}>
-                  Call us
-                </Box>
-              </Box>
-              <Box
-                component="a"
-                href="mailto:info@omnipowersolutions.co.ke"
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 0.75,
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                <EmailIcon fontSize="small" />
-                <Box component="span" sx={{ display: { xs: "none", sm: "none", md: "inline" } }}>
-                  info@omnipowersolutions.co.ke
-                </Box>
-                <Box component="span" sx={{ display: { xs: "none", sm: "inline", md: "none" } }}>
-                  Email us
-                </Box>
-              </Box>
-            </Box>
-            <Box sx={{ display: { xs: "none", sm: "inline-flex" }, alignItems: "center", gap: 0.75 }}>
-              <LocationOnIcon fontSize="small" />
-              Nairobi, Kenya
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-
       <Container maxWidth="lg">
         <Toolbar
           disableGutters
@@ -221,7 +150,15 @@ export function Header() {
                 variant="solid"
                 component={Link}
                 href="/contact"
-                sx={{ ml: 1, borderRadius: 1 }}
+                sx={{
+                  ml: 1,
+                  borderRadius: 1,
+                  bgcolor: "red",
+                  color: "#fff",
+                  "&:hover": {
+                    bgcolor: "darkred",
+                  },
+                }}
               >
                 Get a quote
               </Button>
