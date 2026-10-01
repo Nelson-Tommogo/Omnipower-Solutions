@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
 import "./globals.css"
 import { Providers } from "./providers"
 import { Header } from "@/src/components/header"
@@ -54,16 +55,18 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/placeholder-logo.png" />
       </head>
       <body className={inter.className}>
-        <Providers>
-          <div className="mobile-bottom-nav-shell flex min-h-svh flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <BottomNav />
-          <InstallPrompt />
-          <ServiceWorkerRegister />
-        </Providers>
+        <AppRouterCacheProvider options={{ key: "mui" }}>
+          <Providers>
+            <div className="mobile-bottom-nav-shell flex min-h-svh flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <BottomNav />
+            <InstallPrompt />
+            <ServiceWorkerRegister />
+          </Providers>
+        </AppRouterCacheProvider>
       </body>
     </html>
   )
