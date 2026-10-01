@@ -39,6 +39,15 @@
     --chart-3: 210 40% 96.1%;
     --chart-4: 215.4 16.3% 46.9%;
     --chart-5: 222.2 47.4% 11.2%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -69,6 +78,15 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -108,7 +126,7 @@ body {
   -webkit-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   overflow-x: hidden;
 }
@@ -123,16 +141,6 @@ a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Ensure viewport is properly set on mobile */
-@supports (padding: max(0px)) {
-  body {
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-    padding-top: max(12px, env(safe-area-inset-top));
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-}
-
 /* Prevent pinch zoom on input focus */
 input, textarea, select {
   font-size: 16px;
@@ -143,19 +151,70 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Better button styling for touch targets */
-button, a {
-  min-height: 44px;
-  min-width: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* Modal improvements for PWA */
 @media (max-height: 500px) {
   dialog, .modal {
     max-height: 90vh;
     overflow-y: auto;
+  }
+}
+
+.mobile-bottom-nav-shell {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  z-index: 1200;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.25rem;
+  border-top: 1px solid hsl(var(--border));
+  background: hsl(var(--background) / 0.96);
+  padding: 0.5rem max(0.75rem, env(safe-area-inset-right))
+    calc(0.5rem + env(safe-area-inset-bottom))
+    max(0.75rem, env(safe-area-inset-left));
+  backdrop-filter: blur(12px);
+}
+
+.mobile-bottom-nav__link {
+  display: flex;
+  min-width: 0;
+  min-height: 3rem;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-radius: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.mobile-bottom-nav__link.is-active {
+  background: hsl(var(--primary) / 0.08);
+  color: hsl(var(--primary));
+}
+
+@media (min-width: 900px) {
+  .mobile-bottom-nav-shell {
+    padding-bottom: 0;
+  }
+
+  .mobile-bottom-nav {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

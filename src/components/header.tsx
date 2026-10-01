@@ -236,7 +236,7 @@ export function Header() {
         </Toolbar>
       </Container>
 
-      <Drawer anchor="right" open={mobileOpen} onClose={closeDrawer}>
+      <Drawer anchor="left" open={mobileOpen} onClose={closeDrawer}>
         <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
           <IconButton onClick={closeDrawer} aria-label="close menu">
             <CloseIcon />

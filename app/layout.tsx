@@ -5,6 +5,7 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { Header } from "@/src/components/header"
 import { Footer } from "@/src/components/footer"
+import { BottomNav } from "@/src/components/bottom-nav"
 import { InstallPrompt } from "@/src/components/install-prompt"
 import { ServiceWorkerRegister } from "@/src/components/service-worker-register"
 
@@ -54,9 +55,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="mobile-bottom-nav-shell flex min-h-svh flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <BottomNav />
           <InstallPrompt />
           <ServiceWorkerRegister />
         </Providers>
