@@ -26,12 +26,20 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#FF1E00", // Omnipower red
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#0A2E0F", // Dark green
+          DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        maroon: {
+          DEFAULT: "hsl(var(--maroon))",
+          foreground: "hsl(var(--maroon-foreground))",
+        },
+        blue: {
+          DEFAULT: "hsl(var(--blue))",
+          foreground: "hsl(var(--blue-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

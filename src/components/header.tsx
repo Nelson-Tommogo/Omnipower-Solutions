@@ -49,7 +49,13 @@ export function Header() {
   const isCompanyActive = companyItems.some((i) => pathname === i.href)
 
   return (
-    <AppBar>
+    <AppBar
+      sx={{
+        backgroundColor: "maroon.main",
+        color: "common.white",
+        borderBottomColor: "maroon.dark",
+      }}
+    >
       <Container maxWidth="lg">
         <Toolbar
           disableGutters
@@ -63,7 +69,7 @@ export function Header() {
               display: "flex",
               alignItems: "center",
               gap: 1,
-              color: "text.primary",
+              color: "common.white",
               textDecoration: "none",
               flexShrink: 0,
             }}
@@ -84,7 +90,7 @@ export function Header() {
               <Typography
                 component="span"
                 sx={{
-                  color: "text.secondary",
+                  color: "rgba(255, 255, 255, 0.75)",
                   fontSize: "0.68rem",
                   fontWeight: 600,
                   letterSpacing: "0.19em",
@@ -153,11 +159,6 @@ export function Header() {
                 sx={{
                   ml: 1,
                   borderRadius: 1,
-                  bgcolor: "red",
-                  color: "#fff",
-                  "&:hover": {
-                    bgcolor: "darkred",
-                  },
                 }}
               >
                 Get a quote

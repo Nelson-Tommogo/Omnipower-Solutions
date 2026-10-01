@@ -5,13 +5,13 @@ import { createTheme } from "@mui/material/styles"
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#F4511E", // coral
-      light: "#FF7043",
-      dark: "#C63D10",
+      main: "#FF1E00",
+      light: "#FF5A4F",
+      dark: "#C60000",
       contrastText: "#FFFFFF",
     },
     secondary: {
-      main: "#1976D2", // blue accent
+      main: "#1976D2",
       light: "#42A5F5",
       dark: "#0D47A1",
       contrastText: "#FFFFFF",
@@ -20,12 +20,6 @@ export const theme = createTheme({
       main: "#5C1414",
       light: "#7A1E1E",
       dark: "#3D0D0D",
-      contrastText: "#FFFFFF",
-    },
-    coral: {
-      main: "#F4511E",
-      light: "#FF7043",
-      dark: "#C63D10",
       contrastText: "#FFFFFF",
     },
     text: {
@@ -56,8 +50,8 @@ export const theme = createTheme({
 
 // Non-palette brand tokens for convenience
 export const brand = {
+  red: "#FF1E00",
   maroon: "#5C1414",
-  coral: "#F4511E",
-  pink: "#F8A99A",
   blue: "#1976D2",
+  white: "#FFFFFF",
 }
