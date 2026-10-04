@@ -1,13 +1,18 @@
-import { forwardRef, HTMLAttributes, JSX } from "react"
+import { forwardRef, HTMLAttributes, ElementType, CSSProperties } from "react"
 
-type BoxProps = HTMLAttributes<HTMLDivElement> & {
-  component?: keyof JSX.IntrinsicElements
-  sx?: Record<string, unknown>
+type BoxProps = HTMLAttributes<HTMLElement> & {
+  component?: ElementType
+  sx?: CSSProperties
+  children?: React.ReactNode
 }
 
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({ component: Component = "div", sx, style, ...props }, ref) => {
-    return <Component ref={ref} style={{ ...style }} {...props} />
+export const Box = forwardRef<HTMLElement, BoxProps>(
+  ({ component: Component = "div", sx, style, children, ...props }, ref) => {
+    return (
+      <Component ref={ref} style={{ ...sx, ...style }} {...props}>
+        {children}
+      </Component>
+    )
   }
 )
 
