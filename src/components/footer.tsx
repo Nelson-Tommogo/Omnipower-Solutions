@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Box, Container, Link as MuiLink, Stack, Typography } from "@mui/material"
+import { Box, Container, Link as MuiLink, Typography } from "@mui/material"
 import {
   MdAccessTime,
   MdBusinessCenter,
@@ -57,7 +57,7 @@ export function Footer() {
             <Typography sx={{ mt: 2.5, maxWidth: 300, color: "rgba(255,255,255,0.68)", fontSize: 14, lineHeight: 1.8 }}>
               Practical electrical, solar and security solutions for homes and businesses across Kenya.
             </Typography>
-            <Stack direction="row" spacing={1.25} sx={{ mt: 2.5 }}>
+            <Box sx={{ display: "flex", gap: 1.25, mt: 2.5 }}>
               {[
                 { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61556519845389", icon: <MdFacebook /> },
                 { label: "X", href: "https://x.com/omnipowerkenya", icon: <MdChatBubble /> },
@@ -85,63 +85,63 @@ export function Footer() {
                   {icon}
                 </MuiLink>
               ))}
-            </Stack>
+            </Box>
           </Box>
 
           <Box>
             <Typography variant="subtitle1" sx={{ fontWeight: 750, mb: 2 }}>
               Explore
             </Typography>
-            <Stack spacing={1.3} alignItems="flex-start">
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1.3 }}>
               {quickLinks.map(({ label, href }) => (
                 <MuiLink key={href} component={Link} href={href} sx={linkSx}>
                   {label}
                 </MuiLink>
               ))}
-            </Stack>
+            </Box>
           </Box>
 
           <Box>
             <Typography variant="subtitle1" sx={{ fontWeight: 750, mb: 2 }}>
               Our services
             </Typography>
-            <Stack spacing={1.3} alignItems="flex-start">
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1.3 }}>
               {serviceLinks.map(({ label, href }) => (
                 <MuiLink key={href} component={Link} href={href} sx={linkSx}>
                   {label}
                 </MuiLink>
               ))}
-            </Stack>
+            </Box>
           </Box>
 
           <Box>
             <Typography variant="subtitle1" sx={{ fontWeight: 750, mb: 2 }}>
               Get in touch
             </Typography>
-            <Stack spacing={1.7}>
-              <Stack direction="row" spacing={1.4} alignItems="flex-start">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.7 }}>
+              <Box sx={{ display: "flex", gap: 1.4, alignItems: "flex-start" }}>
                 <MdPhone size={19} color="#ff7549" />
                 <Typography sx={{ color: "rgba(255,255,255,0.72)", fontSize: 14, lineHeight: 1.7 }}>
                   +254 725 674144<br />+254 759 735505
                 </Typography>
-              </Stack>
-              <Stack direction="row" spacing={1.4} alignItems="center">
+              </Box>
+              <Box sx={{ display: "flex", gap: 1.4, alignItems: "center" }}>
                 <MdMail size={19} color="#ff7549" />
                 <MuiLink href="mailto:info@omnipowersolutions.co.ke" sx={linkSx}>
                   info@omnipowersolutions.co.ke
                 </MuiLink>
-              </Stack>
-              <Stack direction="row" spacing={1.4} alignItems="center">
+              </Box>
+              <Box sx={{ display: "flex", gap: 1.4, alignItems: "center" }}>
                 <MdLocationOn size={19} color="#ff7549" />
                 <Typography sx={{ color: "rgba(255,255,255,0.72)", fontSize: 14 }}>Nairobi, Kenya</Typography>
-              </Stack>
-              <Stack direction="row" spacing={1.4} alignItems="flex-start">
+              </Box>
+              <Box sx={{ display: "flex", gap: 1.4, alignItems: "flex-start" }}>
                 <MdAccessTime size={19} color="#ff7549" />
                 <Typography sx={{ color: "rgba(255,255,255,0.72)", fontSize: 14, lineHeight: 1.7 }}>
                   Mon – Fri: 9:00 – 19:00<br />Closed on weekends
                 </Typography>
-              </Stack>
-            </Stack>
+              </Box>
+            </Box>
           </Box>
         </Box>
 

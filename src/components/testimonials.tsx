@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Avatar, Box, Container, IconButton, Rating, Stack, Typography } from "@mui/material"
+import { Avatar, Box, Container, IconButton, Rating, Typography } from "@mui/material"
 import { MdChevronLeft, MdChevronRight, MdFormatQuote } from "react-icons/md"
 
 const testimonials = [
@@ -44,7 +44,7 @@ export function Testimonials() {
   return (
     <Box component="section" aria-label="Client testimonials" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#f7f7f5" }}>
       <Container maxWidth="md">
-        <Stack alignItems="center" textAlign="center">
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.16em" }}>
             Good work speaks for itself
           </Typography>
@@ -77,7 +77,7 @@ export function Testimonials() {
             >
               “{testimonial.content}”
             </Typography>
-            <Stack direction="row" justifyContent="center" alignItems="center" spacing={1.5} sx={{ mt: 4 }}>
+            <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 1.5, mt: 4 }}>
               <Avatar sx={{ bgcolor: "secondary.main", width: 46, height: 46, fontWeight: 700 }}>
                 {testimonial.initials}
               </Avatar>
@@ -87,8 +87,8 @@ export function Testimonials() {
                   {testimonial.role}
                 </Typography>
               </Box>
-            </Stack>
-            <Stack direction="row" justifyContent="center" spacing={1} sx={{ mt: 3 }}>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", gap: 1, mt: 3 }}>
               {testimonials.map((item, index) => (
                 <Box
                   key={item.id}
@@ -108,7 +108,7 @@ export function Testimonials() {
                   }}
                 />
               ))}
-            </Stack>
+            </Box>
             <IconButton
               onClick={() => moveTestimonial(-1)}
               aria-label="Previous testimonial"
@@ -138,7 +138,7 @@ export function Testimonials() {
               <MdChevronRight />
             </IconButton>
           </Box>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   )

@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
-import { Box, Button, Card, CardActionArea, Container, Stack, Typography } from "@mui/material"
+import { Box, Button, Card, CardActionArea, Container, Typography } from "@mui/material"
 import { MdArrowOutward } from "react-icons/md"
 import wiringImage from "../../app/services/images/wiring.jpeg"
 import solarImage from "../../app/services/images/panel.jpeg"
@@ -50,13 +50,7 @@ export function ServicesSection() {
   return (
     <Box component="section" id="services" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#f7f7f5" }}>
       <Container maxWidth="lg">
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          justifyContent="space-between"
-          alignItems={{ md: "end" }}
-          spacing={3}
-          sx={{ mb: 5 }}
-        >
+        <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, justifyContent: "space-between", alignItems: { md: "end" }, gap: 3, mb: 5 }}>
           <Box>
             <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.16em" }}>
               What we do
@@ -68,7 +62,7 @@ export function ServicesSection() {
           <Typography sx={{ maxWidth: 390, color: "text.secondary", lineHeight: 1.8 }}>
             One expert team for the systems that keep your home and business running at their best.
           </Typography>
-        </Stack>
+        </Box>
 
         <Box
           sx={{
@@ -119,12 +113,12 @@ export function ServicesSection() {
                   </Typography>
                 </Box>
                 <Box sx={{ p: 2.75 }}>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+                  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 2 }}>
                     <Typography component="h3" variant="h6" sx={{ fontWeight: 750 }}>
                       {service.title}
                     </Typography>
                     <MdArrowOutward size={20} color="#e7461c" />
-                  </Stack>
+                  </Box>
                   <Typography sx={{ mt: 1, color: "text.secondary", lineHeight: 1.7, fontSize: 14 }}>
                     {service.description}
                   </Typography>
@@ -134,7 +128,7 @@ export function ServicesSection() {
           ))}
         </Box>
 
-        <Stack alignItems="center" sx={{ mt: 5 }}>
+        <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", mt: 5 }}>
           <Button
             component={Link}
             href="/services"
@@ -145,7 +139,7 @@ export function ServicesSection() {
             View all services
             <MdArrowOutward size={18} style={{ marginLeft: 8 }} />
           </Button>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   )

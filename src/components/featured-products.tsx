@@ -11,7 +11,6 @@ import {
   Chip,
   Container,
   IconButton,
-  Stack,
   Typography,
 } from "@mui/material"
 import { MdAddShoppingCart, MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md"
@@ -74,7 +73,7 @@ export function FeaturedProducts() {
   return (
     <Box component="section" id="shop" sx={{ py: { xs: 8, md: 12 }, bgcolor: "white" }}>
       <Container maxWidth="lg">
-        <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "end" }} spacing={3}>
+        <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", alignItems: { sm: "end" }, gap: 3 }}>
           <Box>
             <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.16em" }}>
               Shop essentials
@@ -86,7 +85,7 @@ export function FeaturedProducts() {
               Carefully selected products for safer, smarter and more energy-efficient spaces.
             </Typography>
           </Box>
-          <Stack direction="row" spacing={1} sx={{ alignSelf: { xs: "flex-end", sm: "auto" } }}>
+          <Box sx={{ display: "flex", gap: 1, alignSelf: { xs: "flex-end", sm: "auto" } }}>
             <IconButton
               onClick={() => scrollProducts(-1)}
               aria-label="Scroll products left"
@@ -101,8 +100,8 @@ export function FeaturedProducts() {
             >
               <MdChevronRight />
             </IconButton>
-          </Stack>
-        </Stack>
+          </Box>
+        </Box>
 
         <Box
           ref={carouselRef}
@@ -158,7 +157,7 @@ export function FeaturedProducts() {
                 <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.75, minHeight: 40 }}>
                   {product.description}
                 </Typography>
-                <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 2.5 }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2.5 }}>
                   <Typography sx={{ fontWeight: 800, fontSize: 18 }}>
                     KSh {product.price.toLocaleString()}
                   </Typography>
@@ -177,12 +176,12 @@ export function FeaturedProducts() {
                   >
                     <MdAddShoppingCart />
                   </IconButton>
-                </Stack>
+                </Box>
               </CardContent>
             </Card>
           ))}
         </Box>
-        <Stack alignItems="center" sx={{ mt: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", mt: 3 }}>
           <Button
             component={Link}
             href="/shop"
@@ -193,7 +192,7 @@ export function FeaturedProducts() {
             Shop all products
             <MdArrowOutward size={18} style={{ marginLeft: 8 }} />
           </Button>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   )
