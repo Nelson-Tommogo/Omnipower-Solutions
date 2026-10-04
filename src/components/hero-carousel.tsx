@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Box, Button, Container, IconButton, Stack, Typography } from "@mui/material"
+import { Box, Button, Container, IconButton, Typography } from "@mui/material"
 import { MdChevronLeft, MdChevronRight, MdOutlineBolt, MdOutlineVerifiedUser } from "react-icons/md"
 import cctvImage from "../../app/services/images/cctvpic.jpeg"
 import solarImage from "../../app/services/images/panel.jpeg"
@@ -106,12 +106,12 @@ export function HeroCarousel() {
               py: 8,
             }}
           >
-            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3, color: "#ffb348" }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3, color: "#ffb348" }}>
               <MdOutlineBolt size={19} />
               <Typography variant="overline" sx={{ fontWeight: 800, letterSpacing: "0.16em" }}>
                 {slide.eyebrow}
               </Typography>
-            </Stack>
+            </Box>
             <Typography
               component="h1"
               sx={{
@@ -128,7 +128,7 @@ export function HeroCarousel() {
             <Typography sx={{ mt: 3, maxWidth: 570, color: "rgba(255,255,255,0.82)", fontSize: { xs: 16, md: 19 }, lineHeight: 1.8 }}>
               {slide.description}
             </Typography>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mt: 4 }}>
+            <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: { sm: "center" }, gap: 2, mt: 4 }}>
               <Button
                 component={Link}
                 href={slide.href}
@@ -139,18 +139,18 @@ export function HeroCarousel() {
                 {slide.cta}
                 <MdChevronRight size={21} style={{ marginLeft: 8 }} />
               </Button>
-              <Stack direction="row" alignItems="center" spacing={1} sx={{ color: "rgba(255,255,255,0.85)", px: { sm: 1 } }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "rgba(255,255,255,0.85)", px: { sm: 1 } }}>
                 <MdOutlineVerifiedUser size={20} />
                 <Typography variant="body2" sx={{ fontWeight: 600 }}>
                   Trusted local expertise
                 </Typography>
-              </Stack>
-            </Stack>
+              </Box>
+            </Box>
           </Box>
         ))}
       </Container>
 
-      <Stack direction="row" spacing={1} sx={{ position: "absolute", right: { xs: 18, md: 48 }, bottom: 28, zIndex: 2 }}>
+      <Box sx={{ display: "flex", gap: 1, position: "absolute", right: { xs: 18, md: 48 }, bottom: 28, zIndex: 2 }}>
         <IconButton
           onClick={() => moveSlide(-1)}
           aria-label="Previous featured solution"
@@ -165,8 +165,8 @@ export function HeroCarousel() {
         >
           <MdChevronRight />
         </IconButton>
-      </Stack>
-      <Stack direction="row" spacing={1} sx={{ position: "absolute", left: { xs: 24, md: "max(calc((100vw - 1200px) / 2), 24px)" }, bottom: 38, zIndex: 2 }}>
+      </Box>
+      <Box sx={{ display: "flex", gap: 1, position: "absolute", left: { xs: 24, md: "max(calc((100vw - 1200px) / 2), 24px)" }, bottom: 38, zIndex: 2 }}>
         {slides.map((slide, index) => (
           <Box
             key={slide.title}
@@ -187,7 +187,7 @@ export function HeroCarousel() {
             }}
           />
         ))}
-      </Stack>
+      </Box>
     </Box>
   )
 }
