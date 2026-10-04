@@ -2,36 +2,55 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, ShoppingBag, ShoppingCart, Wrench } from "lucide-react"
+import { BottomNavigation, BottomNavigationAction } from "@mui/material"
+import { MdHome, MdShoppingBag, MdShoppingCart, MdBuild } from "react-icons/md"
 
 const navItems = [
-  { label: "Home", href: "/", icon: Home },
-  { label: "Services", href: "/services", icon: Wrench },
-  { label: "Shop", href: "/shop", icon: ShoppingBag },
-  { label: "Cart", href: "/cart", icon: ShoppingCart },
+  { label: "Home", href: "/", icon: <MdHome /> },
+  { label: "Services", href: "/services", icon: <MdBuild /> },
+  { label: "Shop", href: "/shop", icon: <MdShoppingBag /> },
+  { label: "Cart", href: "/cart", icon: <MdShoppingCart /> },
 ]
 
 export function BottomNav() {
   const pathname = usePathname()
+  const activeItem =
+    navItems.find(({ href }) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)))?.href ??
+    false
 
   return (
-    <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
-      {navItems.map(({ label, href, icon: Icon }) => {
-        const isActive =
-          href === "/" ? pathname === href : pathname === href || pathname.startsWith(`${href}/`)
-
-        return (
-          <Link
-            key={href}
-            href={href}
-            aria-current={isActive ? "page" : undefined}
-            className={`mobile-bottom-nav__link${isActive ? " is-active" : ""}`}
-          >
-            <Icon aria-hidden="true" size={20} />
-            <span>{label}</span>
-          </Link>
-        )
-      })}
-    </nav>
+    <BottomNavigation
+      component="nav"
+      aria-label="Mobile navigation"
+      value={activeItem}
+      showLabels
+      sx={{
+        display: { xs: "flex", md: "none" },
+        position: "fixed",
+        zIndex: 1200,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        height: "calc(64px + env(safe-area-inset-bottom))",
+        pb: "env(safe-area-inset-bottom)",
+        borderTop: "1px solid",
+        borderColor: "divider",
+        bgcolor: "rgba(255,255,255,0.96)",
+        backdropFilter: "blur(12px)",
+      }}
+    >
+      {navItems.map(({ label, href, icon }) => (
+        <BottomNavigationAction
+          key={href}
+          component={Link}
+          href={href}
+          value={href}
+          label={label}
+          icon={icon}
+          aria-current={activeItem === href ? "page" : undefined}
+          sx={{ minWidth: 0, maxWidth: "none" }}
+        />
+      ))}
+    </BottomNavigation>
   )
 }

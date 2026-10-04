@@ -1,126 +1,193 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
-import { MdChevronLeft, MdChevronRight } from "react-icons/md"
-import { Button } from "@/src/components/ui/button"
-import { cn } from "@/src/lib/utils"
 import Link from "next/link"
+import { Box, Button, Container, IconButton, Stack, Typography } from "@mui/material"
+import { MdChevronLeft, MdChevronRight, MdOutlineBolt, MdOutlineVerifiedUser } from "react-icons/md"
+import cctvImage from "../../app/services/images/cctvpic.jpeg"
+import solarImage from "../../app/services/images/panel.jpeg"
+import wiringImage from "../../app/services/images/wiring.jpeg"
 
 const slides = [
   {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__48297-uA3ad9SJ31tv0jqsW61OWOdhubrAoI.jpeg",
-    title: "Smart Home Solutions",
-    description: "Transform your home with our cutting-edge automation and security systems",
-    cta: "Explore Services",
-    link: "/services",
+    image: cctvImage,
+    eyebrow: "Powering safer, smarter spaces",
+    title: "Technology that works for you.",
+    description: "Expert electrical, solar and security solutions for homes and businesses across Kenya.",
+    cta: "Explore our services",
+    href: "/services",
   },
   {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__26351-M796N5hJBEMWsaVr65vB0lA3rFLf82.jpeg",
-    title: "Advanced Security Systems",
-    description: "Protect what matters most with our professional CCTV installation services",
-    cta: "View Security Options",
-    link: "/services/cctv-installation",
+    image: solarImage,
+    eyebrow: "Energy with a brighter future",
+    title: "Make every ray count.",
+    description: "Discover dependable solar systems designed around your property and your energy needs.",
+    cta: "Explore solar solutions",
+    href: "/services/solar-installation",
   },
   {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__26354-t69PRWNHxPn8kgcQz0Q6PpVVVTO1GN.jpeg",
-    title: "Expert Installation",
-    description: "Our certified technicians ensure perfect installation every time",
-    cta: "Get a Quote",
-    link: "/contact",
+    image: wiringImage,
+    eyebrow: "Built on expertise",
+    title: "Power you can depend on.",
+    description: "From a single upgrade to a complete installation, our team gets the details right.",
+    cta: "Talk to our team",
+    href: "/contact",
   },
 ]
 
 export function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // Simplified useEffect without isClient state
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-    }, 5000)
-    return () => clearInterval(interval)
+    const interval = window.setInterval(() => {
+      setCurrentSlide((index) => (index + 1) % slides.length)
+    }, 6000)
+    return () => window.clearInterval(interval)
   }, [])
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+  const moveSlide = (step: number) => {
+    setCurrentSlide((index) => (index + step + slides.length) % slides.length)
   }
 
   return (
-    <div className="relative h-[600px] overflow-hidden">
+    <Box
+      component="section"
+      aria-label="Featured solutions"
+      sx={{
+        position: "relative",
+        minHeight: { xs: 570, md: 660 },
+        overflow: "hidden",
+        bgcolor: "#171817",
+        color: "common.white",
+      }}
+    >
       {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={cn(
-            "absolute inset-0 transition-opacity duration-1000",
-            index === currentSlide ? "opacity-100" : "opacity-0",
-          )}
+        <Box
+          key={slide.title}
+          aria-hidden={index !== currentSlide}
+          sx={{
+            position: "absolute",
+            inset: 0,
+            opacity: index === currentSlide ? 1 : 0,
+            transition: "opacity 900ms ease",
+            pointerEvents: index === currentSlide ? "auto" : "none",
+          }}
         >
-          {/* Image with overlay */}
-          <div className="relative h-full">
-            <Image
-              src={slide.image || "/placeholder.svg"}
-              alt={slide.title}
-              fill
-              className="object-cover object-center"
-              priority={index === 0}
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-
-          {/* Content */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="container">
-              <div className="max-w-2xl text-white">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{slide.title}</h1>
-                <p className="text-xl mb-8">{slide.description}</p>
-                <Button size="lg" className="text-lg px-8" asChild>
-                  <Link href={slide.link}>{slide.cta}</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+          <Image
+            src={slide.image}
+            alt=""
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        </Box>
       ))}
-
-      {/* Navigation buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
-        aria-label="Previous slide"
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(90deg, rgba(16,19,18,0.88) 0%, rgba(16,19,18,0.66) 48%, rgba(16,19,18,0.12) 100%)",
+        }}
+      />
+      <Container
+        maxWidth="lg"
+        sx={{ position: "relative", zIndex: 1, minHeight: { xs: 570, md: 660 }, display: "flex", alignItems: "center" }}
       >
-        <MdChevronLeft size={24} />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
-        aria-label="Next slide"
-      >
-        <MdChevronRight size={24} />
-      </button>
+        {slides.map((slide, index) => (
+          <Box
+            key={slide.title}
+            aria-live={index === currentSlide ? "polite" : undefined}
+            sx={{
+              display: index === currentSlide ? "block" : "none",
+              maxWidth: 730,
+              py: 8,
+            }}
+          >
+            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3, color: "#ffb348" }}>
+              <MdOutlineBolt size={19} />
+              <Typography variant="overline" sx={{ fontWeight: 800, letterSpacing: "0.16em" }}>
+                {slide.eyebrow}
+              </Typography>
+            </Stack>
+            <Typography
+              component="h1"
+              sx={{
+                maxWidth: 700,
+                fontSize: { xs: "3rem", sm: "4rem", md: "5rem" },
+                lineHeight: 1.02,
+                fontWeight: 800,
+                letterSpacing: "-0.055em",
+                textWrap: "balance",
+              }}
+            >
+              {slide.title}
+            </Typography>
+            <Typography sx={{ mt: 3, maxWidth: 570, color: "rgba(255,255,255,0.82)", fontSize: { xs: 16, md: 19 }, lineHeight: 1.8 }}>
+              {slide.description}
+            </Typography>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mt: 4 }}>
+              <Button
+                component={Link}
+                href={slide.href}
+                variant="contained"
+                size="large"
+                sx={{ px: 3.5, py: 1.5, borderRadius: 99, bgcolor: "primary.main", fontWeight: 700 }}
+              >
+                {slide.cta}
+                <MdChevronRight size={21} style={{ marginLeft: 8 }} />
+              </Button>
+              <Stack direction="row" alignItems="center" spacing={1} sx={{ color: "rgba(255,255,255,0.85)", px: { sm: 1 } }}>
+                <MdOutlineVerifiedUser size={20} />
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  Trusted local expertise
+                </Typography>
+              </Stack>
+            </Stack>
+          </Box>
+        ))}
+      </Container>
 
-      {/* Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
+      <Stack direction="row" spacing={1} sx={{ position: "absolute", right: { xs: 18, md: 48 }, bottom: 28, zIndex: 2 }}>
+        <IconButton
+          onClick={() => moveSlide(-1)}
+          aria-label="Previous featured solution"
+          sx={{ color: "white", border: "1px solid rgba(255,255,255,0.5)", bgcolor: "rgba(15,15,15,0.18)" }}
+        >
+          <MdChevronLeft />
+        </IconButton>
+        <IconButton
+          onClick={() => moveSlide(1)}
+          aria-label="Next featured solution"
+          sx={{ color: "white", border: "1px solid rgba(255,255,255,0.5)", bgcolor: "rgba(15,15,15,0.18)" }}
+        >
+          <MdChevronRight />
+        </IconButton>
+      </Stack>
+      <Stack direction="row" spacing={1} sx={{ position: "absolute", left: { xs: 24, md: "max(calc((100vw - 1200px) / 2), 24px)" }, bottom: 38, zIndex: 2 }}>
+        {slides.map((slide, index) => (
+          <Box
+            key={slide.title}
+            component="button"
+            type="button"
+            aria-label={`Show featured solution ${index + 1}`}
+            aria-current={index === currentSlide}
             onClick={() => setCurrentSlide(index)}
-            className={cn(
-              "w-3 h-3 rounded-full transition-colors",
-              index === currentSlide ? "bg-primary" : "bg-white/50",
-            )}
-            aria-label={`Go to slide ${index + 1}`}
+            sx={{
+              width: index === currentSlide ? 30 : 8,
+              height: 8,
+              p: 0,
+              border: 0,
+              borderRadius: 10,
+              bgcolor: index === currentSlide ? "primary.main" : "rgba(255,255,255,0.55)",
+              cursor: "pointer",
+              transition: "all 200ms ease",
+            }}
           />
         ))}
-      </div>
-    </div>
+      </Stack>
+    </Box>
   )
 }

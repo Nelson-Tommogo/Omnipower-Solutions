@@ -1,92 +1,152 @@
+import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
-import Image from "next/image"
+import { Box, Button, Card, CardActionArea, Container, Stack, Typography } from "@mui/material"
+import { MdArrowOutward } from "react-icons/md"
+import wiringImage from "../../app/services/images/wiring.jpeg"
+import solarImage from "../../app/services/images/panel.jpeg"
+import cctvImage from "../../app/services/images/cctvpic.jpeg"
+import fenceImage from "../../app/services/images/electricfence.jpeg"
+import gatesImage from "../../app/services/images/automatedgates.jpg"
 
-const services = [
+const services: { title: string; description: string; image: StaticImageData; href: string; number: string }[] = [
   {
-    id: 1,
-    title: "Electrical Wiring",
-    description: "Professional electrical wiring services for residential and commercial properties.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__26353-J4s65jyv6FZSx5HrvokZInknhuyzIx.jpeg",
-    link: "/services/electrical-wiring",
+    title: "Electrical wiring",
+    description: "Safe, reliable electrical installations and upgrades for every kind of space.",
+    image: wiringImage,
+    href: "/services/electrical-wiring",
+    number: "01",
   },
   {
-    id: 2,
-    title: "Solar Installation",
-    description: "Harness the power of the sun with our expert solar panel installation services.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2d9b0cd4-5e14-4bfd-a978-311cd3c56562.jpg-TYTZaLlvR1dINOcf6VG2dGVe29y5bP.jpeg",
-    link: "/services/solar-installation",
+    title: "Solar installation",
+    description: "Smarter energy solutions, expertly designed and installed for your needs.",
+    image: solarImage,
+    href: "/services/solar-installation",
+    number: "02",
   },
   {
-    id: 3,
-    title: "CCTV Installation",
-    description: "Keep your property secure with our state-of-the-art CCTV installation services.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ee3ebcd5-724c-4d8f-8897-807035d34b4b.jpg-I8jtLIBnS5VE8ic6Kn4djr8JmgOpfC.jpeg",
-    link: "/services/cctv-installation",
+    title: "CCTV & security",
+    description: "Keep watch over what matters with dependable security systems.",
+    image: cctvImage,
+    href: "/services/cctv-installation",
+    number: "03",
   },
   {
-    id: 4,
-    title: "Electric Fences",
-    description: "Enhance your security with our reliable electric fence installation services.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__26352-3AxXdKeLUlyp7V4LTnIEd8hKc1hKdA.jpeg",
-    link: "/services/electric-fences",
+    title: "Electric fencing",
+    description: "Professional perimeter protection for residential and commercial properties.",
+    image: fenceImage,
+    href: "/services/electric-fences",
+    number: "04",
   },
   {
-    id: 5,
-    title: "Automated Gates",
-    description: "Upgrade your property with our convenient automated gate installation services.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__the-style-is-candid-image-photography-with-natural__26350-Adx6dX9UpVHjbwhsG98VpH2esF8oUf.jpeg",
-    link: "/services/automated-gates",
+    title: "Automated gates",
+    description: "Convenient, secure access control built around your property.",
+    image: gatesImage,
+    href: "/services/automated-gates",
+    number: "05",
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Our Services</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We provide a wide range of electrical and security services to meet your needs
-          </p>
-        </div>
+    <Box component="section" id="services" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#f7f7f5" }}>
+      <Container maxWidth="lg">
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          justifyContent="space-between"
+          alignItems={{ md: "end" }}
+          spacing={3}
+          sx={{ mb: 5 }}
+        >
+          <Box>
+            <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.16em" }}>
+              What we do
+            </Typography>
+            <Typography component="h2" variant="h3" sx={{ mt: 1, fontWeight: 800, letterSpacing: "-0.04em" }}>
+              Solutions for a brighter,<br /> safer tomorrow.
+            </Typography>
+          </Box>
+          <Typography sx={{ maxWidth: 390, color: "text.secondary", lineHeight: 1.8 }}>
+            One expert team for the systems that keep your home and business running at their best.
+          </Typography>
+        </Stack>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
+            gap: 2.5,
+          }}
+        >
           {services.map((service) => (
-            <div
-              key={service.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105"
+            <Card
+              key={service.number}
+              elevation={0}
+              sx={{
+                border: "1px solid",
+                borderColor: "rgba(22,30,27,0.08)",
+                borderRadius: 3,
+                overflow: "hidden",
+                bgcolor: "white",
+                transition: "transform 220ms ease, box-shadow 220ms ease",
+                "&:hover": { transform: "translateY(-5px)", boxShadow: "0 18px 44px rgba(16,28,24,0.11)" },
+              }}
             >
-              <div className="relative h-48">
-                <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link
-                  href={service.link}
-                  className="text-blue-600 font-medium hover:underline inline-flex items-center"
-                >
-                  Learn More <span className="ml-1">→</span>
-                </Link>
-              </div>
-            </div>
+              <CardActionArea component={Link} href={service.href} sx={{ height: "100%" }}>
+                <Box sx={{ position: "relative", height: 210, overflow: "hidden" }}>
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: "cover", transition: "transform 450ms ease" }}
+                  />
+                  <Typography
+                    sx={{
+                      position: "absolute",
+                      top: 15,
+                      left: 16,
+                      px: 1.25,
+                      py: 0.6,
+                      borderRadius: 99,
+                      bgcolor: "rgba(255,255,255,0.92)",
+                      color: "text.secondary",
+                      fontSize: 11,
+                      fontWeight: 800,
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {service.number}
+                  </Typography>
+                </Box>
+                <Box sx={{ p: 2.75 }}>
+                  <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+                    <Typography component="h3" variant="h6" sx={{ fontWeight: 750 }}>
+                      {service.title}
+                    </Typography>
+                    <MdArrowOutward size={20} color="#e7461c" />
+                  </Stack>
+                  <Typography sx={{ mt: 1, color: "text.secondary", lineHeight: 1.7, fontSize: 14 }}>
+                    {service.description}
+                  </Typography>
+                </Box>
+              </CardActionArea>
+            </Card>
           ))}
-        </div>
+        </Box>
 
-        <div className="text-center mt-10">
-          <Link
+        <Stack alignItems="center" sx={{ mt: 5 }}>
+          <Button
+            component={Link}
             href="/services"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            variant="outlined"
+            size="large"
+            sx={{ borderRadius: 99, px: 3, py: 1.25, fontWeight: 700 }}
           >
-            View All Services
-          </Link>
-        </div>
-      </div>
-    </section>
+            View all services
+            <MdArrowOutward size={18} style={{ marginLeft: 8 }} />
+          </Button>
+        </Stack>
+      </Container>
+    </Box>
   )
 }

@@ -1,37 +1,30 @@
 "use client"
 
+import { useState, type MouseEvent } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState, type MouseEvent } from "react"
 import { usePathname } from "next/navigation"
-import MenuIcon from "@mui/icons-material/Menu"
-import CloseIcon from "@mui/icons-material/Close"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import ExpandLessIcon from "@mui/icons-material/ExpandLess"
-import { AppBar, Toolbar } from "@/src/components/ui/app-bar"
-import { Box } from "@/src/components/ui/box"
-import { Button } from "@/src/components/ui/button"
-import { Container } from "@/src/components/ui/container"
-import { Drawer } from "@/src/components/ui/drawer"
-import { IconButton } from "@/src/components/ui/icon-button"
 import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  Collapse,
-} from "@/src/components/ui/list"
-import { Menu, MenuItem } from "@/src/components/ui/menu"
+  Menu,
+  MenuItem,
+  Toolbar,
+} from "@mui/material"
+import { MdClose, MdExpandMore, MdMenu } from "react-icons/md"
 import { BRAND_LOGO_SRC } from "@/src/lib/brand"
-
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Shop", href: "/shop" },
-]
 
 const companyItems = [
   { name: "About us", href: "/about" },
+  { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -40,36 +33,31 @@ export function Header() {
   const [companyAnchor, setCompanyAnchor] = useState<null | HTMLElement>(null)
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false)
   const pathname = usePathname()
+  const companyActive = companyItems.some(({ href }) => pathname === href || pathname.startsWith(`${href}/`))
 
   const closeDrawer = () => setMobileOpen(false)
   const closeCompany = () => setCompanyAnchor(null)
-  const isCompanyActive = companyItems.some((i) => pathname === i.href)
+  const openCompany = (event: MouseEvent<HTMLButtonElement>) => setCompanyAnchor(event.currentTarget)
 
   return (
     <AppBar
+      position="sticky"
+      elevation={0}
       sx={{
-        backgroundColor: "common.white",
+        bgcolor: "rgba(255,255,255,0.96)",
         color: "text.primary",
-        borderBottomColor: "divider",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+        backdropFilter: "blur(14px)",
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar
-          disableGutters
-          sx={{ minHeight: { xs: 64, md: 76 }, justifyContent: "space-between", gap: 2 }}
-        >
+        <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 82 }, justifyContent: "space-between", gap: 2 }}>
           <Box
             component={Link}
             href="/"
             aria-label="Omnipower Solutions home"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "text.primary",
-              textDecoration: "none",
-              flexShrink: 0,
-            }}
+            sx={{ display: "flex", alignItems: "center", flexShrink: 0 }}
           >
             <Image
               src={BRAND_LOGO_SRC}
@@ -77,125 +65,123 @@ export function Header() {
               width={200}
               height={60}
               priority
-              className="h-12 w-auto max-w-[180px] object-contain"
+              style={{ width: "auto", height: 48, maxWidth: 180, objectFit: "contain" }}
             />
           </Box>
 
-          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
-              {navItems.map((item) => (
-                <Button
-                  key={item.name}
-                  variant="nav"
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.75 }}>
+            <Button
+              component={Link}
+              href="/"
+              color={pathname === "/" ? "primary" : "inherit"}
+              sx={{ px: 2, fontWeight: 700 }}
+            >
+              Home
+            </Button>
+            <Button
+              component={Link}
+              href="/shop"
+              color={pathname.startsWith("/shop") ? "primary" : "inherit"}
+              sx={{ px: 2, fontWeight: 700 }}
+            >
+              Shop
+            </Button>
+            <Button
+              onClick={openCompany}
+              color={companyActive ? "primary" : "inherit"}
+              endIcon={<MdExpandMore size={20} />}
+              sx={{ px: 2, fontWeight: 700 }}
+              aria-haspopup="true"
+              aria-expanded={Boolean(companyAnchor)}
+            >
+              Company
+            </Button>
+            <Menu anchorEl={companyAnchor} open={Boolean(companyAnchor)} onClose={closeCompany}>
+              {companyItems.map(({ name, href }) => (
+                <MenuItem
+                  key={href}
                   component={Link}
-                  href={item.href}
-                  className={pathname === item.href ? "active" : ""}
+                  href={href}
+                  onClick={closeCompany}
+                  selected={pathname === href}
                 >
-                  {item.name}
-                </Button>
+                  {name}
+                </MenuItem>
               ))}
-
-              <Button
-                variant="nav"
-                className={isCompanyActive ? "active" : ""}
-                onClick={(event: MouseEvent<HTMLButtonElement>) =>
-                  setCompanyAnchor(event.currentTarget)
-                }
-                endIcon={
-                  <ExpandMoreIcon
-                    sx={{
-                      transition: "transform 0.2s",
-                      transform: companyAnchor ? "rotate(180deg)" : "rotate(0)",
-                    }}
-                  />
-                }
-              >
-                Company
-              </Button>
-
-              <Menu
-                anchorEl={companyAnchor}
-                open={Boolean(companyAnchor)}
-                onClose={closeCompany}
-              >
-                {companyItems.map((item) => (
-                  <MenuItem
-                    key={item.name}
-                    component={Link}
-                    href={item.href}
-                    onClick={closeCompany}
-                    sx={{ color: pathname === item.href ? "primary.main" : undefined }}
-                  >
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Menu>
-
-              <Button
-                variant="solid"
-                component={Link}
-                href="/contact"
-                sx={{
-                  ml: 1,
-                  borderRadius: 1,
-                }}
-              >
-                Get a quote
-              </Button>
+            </Menu>
+            <Button
+              component={Link}
+              href="/contact"
+              variant="contained"
+              sx={{ ml: 1.5, px: 2.5, py: 1.1, borderRadius: 99, fontWeight: 700 }}
+            >
+              Get a quote
+            </Button>
           </Box>
 
           <IconButton
-            sx={{ display: { xs: "inline-flex", md: "none" } }}
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label="toggle menu"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            sx={{ display: { xs: "inline-flex", md: "none" }, color: "text.primary" }}
           >
-            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+            {mobileOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
           </IconButton>
         </Toolbar>
       </Container>
 
-      <Drawer anchor="left" open={mobileOpen} onClose={closeDrawer}>
-        <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
-          <IconButton onClick={closeDrawer} aria-label="close menu">
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item.name} disablePadding>
-              <ListItemButton
-                component={Link}
-                href={item.href}
-                onClick={closeDrawer}
-                sx={{ color: pathname === item.href ? "primary.main" : undefined }}
-              >
-                <ListItemText primary={item.name} />
+      <Drawer anchor="right" open={mobileOpen} onClose={closeDrawer}>
+        <Box sx={{ width: 300, maxWidth: "85vw", p: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <IconButton onClick={closeDrawer} aria-label="Close navigation menu">
+              <MdClose />
+            </IconButton>
+          </Box>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/" selected={pathname === "/"} onClick={closeDrawer}>
+                <ListItemText primary="Home" />
               </ListItemButton>
             </ListItem>
-          ))}
-
-          <ListItem disablePadding>
-            <ListItemButton onClick={() => setMobileCompanyOpen((v) => !v)}>
-              <ListItemText primary="Company" />
-              {mobileCompanyOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </ListItemButton>
-          </ListItem>
-          <Collapse in={mobileCompanyOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {companyItems.map((item) => (
-                <ListItem key={item.name} disablePadding>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                href="/shop"
+                selected={pathname.startsWith("/shop")}
+                onClick={closeDrawer}
+              >
+                <ListItemText primary="Shop" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => setMobileCompanyOpen((open) => !open)}>
+                <ListItemText primary="Company" />
+                <MdExpandMore
+                  size={20}
+                  style={{ transform: mobileCompanyOpen ? "rotate(180deg)" : undefined, transition: "transform 180ms" }}
+                />
+              </ListItemButton>
+            </ListItem>
+            {mobileCompanyOpen &&
+              companyItems.map(({ name, href }) => (
+                <ListItem key={href} disablePadding>
                   <ListItemButton
                     component={Link}
-                    href={item.href}
+                    href={href}
+                    selected={pathname === href}
                     onClick={closeDrawer}
-                    sx={{ pl: 4, color: pathname === item.href ? "primary.main" : undefined }}
+                    sx={{ pl: 4 }}
                   >
-                    <ListItemText primary={item.name} />
+                    <ListItemText primary={name} />
                   </ListItemButton>
                 </ListItem>
               ))}
-            </List>
-          </Collapse>
-        </List>
+            <ListItem sx={{ pt: 2 }}>
+              <Button component={Link} href="/contact" variant="contained" fullWidth onClick={closeDrawer}>
+                Get a quote
+              </Button>
+            </ListItem>
+          </List>
+        </Box>
       </Drawer>
     </AppBar>
   )

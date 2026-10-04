@@ -1,104 +1,200 @@
 "use client"
 
-import Image from "next/image"
+import { useRef } from "react"
+import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
-import { MdShoppingCart } from "react-icons/md"
-import { Button } from "@/src/components/ui/button"
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Container,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material"
+import { MdAddShoppingCart, MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md"
 import { useCart } from "./cart-provider"
 import cctv from "./images/hdcctv.jpg"
 import smartdoor from "./images/hdsmartdoorlock.jpg"
 import solar from "./images/solarpanelkit.jpg"
 import fence from "./images/electricfence.jpg"
 
-
-const products = [
+const products: {
+  id: string
+  name: string
+  description: string
+  price: number
+  image: StaticImageData
+  tag: string
+}[] = [
   {
     id: "p1",
     name: "HD CCTV Camera",
-    description: "1080p high-definition security camera with night vision",
+    description: "Clear 1080p security with night vision.",
     price: 7500,
-    image: cctv
-    },
-  { 
+    image: cctv,
+    tag: "Best seller",
+  },
+  {
     id: "p2",
     name: "Smart Door Lock",
-    description: "Fingerprint and PIN code access control system",
+    description: "Keyless access with fingerprint and PIN.",
     price: 12000,
-    image: smartdoor
+    image: smartdoor,
+    tag: "Smart living",
   },
   {
     id: "p3",
     name: "Solar Panel Kit",
-    description: "250W solar panel with mounting hardware and inverter",
+    description: "A dependable start to your solar setup.",
     price: 25000,
-    image: solar
+    image: solar,
+    tag: "Energy",
   },
   {
     id: "p4",
     name: "Electric Fence Energizer",
-    description: "High-voltage pulse generator for electric fences",
+    description: "Reliable pulse power for perimeter security.",
     price: 8500,
-    image: fence
+    image: fence,
+    tag: "Security",
   },
 ]
 
 export function FeaturedProducts() {
   const { addItem } = useCart()
+  const carouselRef = useRef<HTMLDivElement>(null)
 
-  const handleAddToCart = (product: any) => {
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-    })
+  const scrollProducts = (direction: -1 | 1) => {
+    carouselRef.current?.scrollBy({ left: direction * 320, behavior: "smooth" })
   }
 
   return (
-    <section className="py-20">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Products</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore our selection of high-quality products for your security and electrical needs. All products come
-            with warranty and professional installation options.
-          </p>
-        </div>
+    <Box component="section" id="shop" sx={{ py: { xs: 8, md: 12 }, bgcolor: "white" }}>
+      <Container maxWidth="lg">
+        <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "end" }} spacing={3}>
+          <Box>
+            <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.16em" }}>
+              Shop essentials
+            </Typography>
+            <Typography component="h2" variant="h3" sx={{ mt: 1, fontWeight: 800, letterSpacing: "-0.04em" }}>
+              Good gear. Better living.
+            </Typography>
+            <Typography sx={{ mt: 1.5, maxWidth: 560, color: "text.secondary", lineHeight: 1.8 }}>
+              Carefully selected products for safer, smarter and more energy-efficient spaces.
+            </Typography>
+          </Box>
+          <Stack direction="row" spacing={1} sx={{ alignSelf: { xs: "flex-end", sm: "auto" } }}>
+            <IconButton
+              onClick={() => scrollProducts(-1)}
+              aria-label="Scroll products left"
+              sx={{ border: "1px solid", borderColor: "divider" }}
+            >
+              <MdChevronLeft />
+            </IconButton>
+            <IconButton
+              onClick={() => scrollProducts(1)}
+              aria-label="Scroll products right"
+              sx={{ border: "1px solid", borderColor: "divider" }}
+            >
+              <MdChevronRight />
+            </IconButton>
+          </Stack>
+        </Stack>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Box
+          ref={carouselRef}
+          sx={{
+            display: "flex",
+            gap: 2.5,
+            overflowX: "auto",
+            mt: 4,
+            pb: 2,
+            scrollSnapType: "x mandatory",
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": { display: "none" },
+          }}
+        >
           {products.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
-              <div className="relative h-64">
+            <Card
+              key={product.id}
+              elevation={0}
+              sx={{
+                flex: "0 0 clamp(255px, 28vw, 292px)",
+                scrollSnapAlign: "start",
+                border: "1px solid",
+                borderColor: "rgba(22,30,27,0.09)",
+                borderRadius: 3,
+                overflow: "hidden",
+              }}
+            >
+              <Box sx={{ position: "relative", height: 230, bgcolor: "#f6f6f3" }}>
                 <Image
-                  src={product.image || "/placeholder.svg"}
+                  src={product.image}
                   alt={product.name}
                   fill
-                  className="object-contain p-4"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  loading="lazy"
+                  sizes="(max-width: 600px) 80vw, 292px"
+                  style={{ objectFit: "contain", padding: 22 }}
                 />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2">{product.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold">KSh {product.price.toLocaleString()}</span>
-                  <Button size="sm" onClick={() => handleAddToCart(product)} className="flex items-center gap-1">
-                    <MdShoppingCart size={16} />
-                    Add
-                  </Button>
-                </div>
-              </div>
-            </div>
+                <Chip
+                  label={product.tag}
+                  size="small"
+                  sx={{
+                    position: "absolute",
+                    top: 14,
+                    left: 14,
+                    bgcolor: "white",
+                    fontWeight: 700,
+                    fontSize: 11,
+                  }}
+                />
+              </Box>
+              <CardContent sx={{ p: 2.5 }}>
+                <Typography component="h3" variant="h6" sx={{ fontWeight: 750 }}>
+                  {product.name}
+                </Typography>
+                <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.75, minHeight: 40 }}>
+                  {product.description}
+                </Typography>
+                <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 2.5 }}>
+                  <Typography sx={{ fontWeight: 800, fontSize: 18 }}>
+                    KSh {product.price.toLocaleString()}
+                  </Typography>
+                  <IconButton
+                    onClick={() =>
+                      addItem({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image.src,
+                      })
+                    }
+                    aria-label={`Add ${product.name} to cart`}
+                    color="primary"
+                    sx={{ bgcolor: "rgba(231,70,28,0.09)", "&:hover": { bgcolor: "rgba(231,70,28,0.16)" } }}
+                  >
+                    <MdAddShoppingCart />
+                  </IconButton>
+                </Stack>
+              </CardContent>
+            </Card>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button asChild size="lg">
-            <Link href="/shop">View All Products</Link>
+        </Box>
+        <Stack alignItems="center" sx={{ mt: 3 }}>
+          <Button
+            component={Link}
+            href="/shop"
+            variant="contained"
+            size="large"
+            sx={{ px: 3, py: 1.4, borderRadius: 99, fontWeight: 700 }}
+          >
+            Shop all products
+            <MdArrowOutward size={18} style={{ marginLeft: 8 }} />
           </Button>
-        </div>
-      </div>
-    </section>
+        </Stack>
+      </Container>
+    </Box>
   )
 }
