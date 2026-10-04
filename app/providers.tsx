@@ -1,7 +1,8 @@
 "use client"
 
 import type React from "react"
-import { ThemeProvider, CssBaseline } from "@mui/material"
+import CssBaseline from "@mui/material/CssBaseline"
+import { ThemeProvider } from "@mui/material/styles"
 import { CartProvider } from "@/src/components/cart-provider"
 import { theme } from "@/src/theme/theme"
 
