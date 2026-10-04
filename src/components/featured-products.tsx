@@ -3,16 +3,14 @@
 import { useRef } from "react"
 import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Container,
-  IconButton,
-  Typography,
-} from "@mui/material"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import Chip from "@mui/material/Chip"
+import Container from "@mui/material/Container"
+import IconButton from "@mui/material/IconButton"
+import Typography from "@mui/material/Typography"
 import { MdAddShoppingCart, MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md"
 import { useCart } from "./cart-provider"
 import cctv from "./images/hdcctv.jpg"

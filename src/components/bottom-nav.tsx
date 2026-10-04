@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BottomNavigation, BottomNavigationAction } from "@mui/material"
+import BottomNavigation from "@mui/material/BottomNavigation"
+import BottomNavigationAction from "@mui/material/BottomNavigationAction"
 import { MdHome, MdShoppingBag, MdShoppingCart, MdBuild } from "react-icons/md"
 
 const navItems = [

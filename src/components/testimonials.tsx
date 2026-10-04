@@ -1,7 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Avatar, Box, Container, IconButton, Rating, Typography } from "@mui/material"
+import Avatar from "@mui/material/Avatar"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import IconButton from "@mui/material/IconButton"
+import Rating from "@mui/material/Rating"
+import Typography from "@mui/material/Typography"
 import { MdChevronLeft, MdChevronRight, MdFormatQuote } from "react-icons/md"
 
 const testimonials = [
