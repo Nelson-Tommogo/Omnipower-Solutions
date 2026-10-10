@@ -168,12 +168,11 @@ export default function ShopPage() {
                           </span>
                           <Button
                             size="sm"
-                            className="px-2"
+                            className="flex items-center gap-1 px-2"
                             onClick={(e: MouseEvent<HTMLButtonElement>) => {
                               e.preventDefault()
                               handleAddToCart(product)
                             }}
-                            className="flex items-center gap-1"
                           >
                             <MdShoppingCart size={16} />
                             Add
