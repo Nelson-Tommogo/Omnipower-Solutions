@@ -9,14 +9,6 @@ const nextConfig = {
     unoptimized: true,
   },
   generateEtags: false,
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
-      },
-    ];
-  },
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
 };
