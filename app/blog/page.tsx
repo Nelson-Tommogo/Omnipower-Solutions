@@ -1,5 +1,6 @@
 import { blogPosts } from "@/src/lib/blog-data"
 import Image from "next/image"
+import { CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
 import Link from "next/link"
 
 export default function BlogPage() {
@@ -20,7 +21,7 @@ export default function BlogPage() {
             >
               <div className="relative h-64">
                 <Image
-                  src={post.image || "/images/blog-placeholder.jpg"}
+                  src={post.image || CLOUDINARY_PLACEHOLDER}
                   alt={post.title}
                   fill
                   className="object-cover"

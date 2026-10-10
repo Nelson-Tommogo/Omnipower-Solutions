@@ -1,5 +1,6 @@
 import { blogPosts } from "@/src/lib/blog-data"
 import Image from "next/image"
+import { CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -31,7 +32,7 @@ export default async function BlogPostPage({
 
           <div className="relative h-96 w-full mb-8">
             <Image
-              src={post.image || "/images/blog-placeholder.jpg"}
+              src={post.image || CLOUDINARY_PLACEHOLDER}
               alt={post.title}
               fill
               className="object-cover rounded-lg"
