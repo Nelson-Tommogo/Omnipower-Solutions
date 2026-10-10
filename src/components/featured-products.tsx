@@ -116,7 +116,7 @@ export function FeaturedProducts() {
               key={product.id}
               elevation={0}
               sx={{
-                flex: "0 0 clamp(255px, 28vw, 292px)",
+                flex: "0 0 clamp(210px, 24vw, 250px)",
                 scrollSnapAlign: "start",
                 border: "1px solid",
                 borderColor: "rgba(22,30,27,0.09)",
@@ -124,13 +124,13 @@ export function FeaturedProducts() {
                 overflow: "hidden",
               }}
             >
-              <Box sx={{ position: "relative", height: 230, bgcolor: "#f6f6f3" }}>
+              <Box sx={{ position: "relative", height: 175, bgcolor: "#f6f6f3" }}>
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  sizes="(max-width: 600px) 80vw, 292px"
-                  style={{ objectFit: "contain", padding: 22 }}
+                  sizes="(max-width: 600px) 75vw, 250px"
+                  style={{ objectFit: "contain", padding: 16 }}
                 />
                 <Chip
                   label={product.tag}
@@ -145,15 +145,15 @@ export function FeaturedProducts() {
                   }}
                 />
               </Box>
-              <CardContent sx={{ p: 2.5 }}>
-                <Typography component="h3" variant="h6" sx={{ fontWeight: 750 }}>
+              <CardContent sx={{ p: 1.75 }}>
+                <Typography component="h3" variant="subtitle1" sx={{ fontWeight: 750 }}>
                   {product.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.75, minHeight: 40 }}>
                   {product.description}
                 </Typography>
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2.5 }}>
-                  <Typography sx={{ fontWeight: 800, fontSize: 18 }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1.5 }}>
+                  <Typography sx={{ fontWeight: 800, fontSize: 16 }}>
                     KSh {product.price.toLocaleString()}
                   </Typography>
                   <IconButton

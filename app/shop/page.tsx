@@ -144,12 +144,12 @@ export default function ShopPage() {
 
           {/* Product grid */}
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <Link href={product.link} key={product.id} className="group">
                     <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 h-full transition-transform group-hover:-translate-y-1 group-hover:shadow-lg">
-                      <div className="relative h-64">
+                      <div className="relative h-44 sm:h-52">
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -157,17 +157,18 @@ export default function ShopPage() {
                           className="object-contain p-4"
                         />
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                      <div className="p-3 sm:p-4">
+                        <h3 className="text-sm sm:text-base font-bold mb-1 group-hover:text-primary transition-colors">
                           {product.name}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                        <p className="text-gray-600 text-xs sm:text-sm mb-3 line-clamp-2">{product.description}</p>
                         <div className="flex justify-between items-center">
-                          <span className="text-xl font-bold">
+                          <span className="text-sm sm:text-lg font-bold">
                             KSh {product.price.toLocaleString()}
                           </span>
                           <Button
                             size="sm"
+                            className="px-2"
                             onClick={(e: MouseEvent<HTMLButtonElement>) => {
                               e.preventDefault()
                               handleAddToCart(product)
