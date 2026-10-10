@@ -9,9 +9,11 @@ import Container from "@mui/material/Container"
 import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import { MdChevronLeft, MdChevronRight, MdOutlineBolt, MdOutlineVerifiedUser } from "react-icons/md"
-import cctvImage from "../../app/services/images/cctvpic.jpeg"
-import solarImage from "../../app/services/images/panel.jpeg"
-import wiringImage from "../../app/services/images/wiring.jpeg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const cctvImage = cloudinaryImage("cctvpic.jpeg")
+const solarImage = cloudinaryImage("panel.jpeg")
+const wiringImage = cloudinaryImage("wiring.jpeg")
 
 const slides = [
   {

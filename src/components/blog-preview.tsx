@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
 
 // Simplified blog posts data directly in the component
 const previewPosts = [
@@ -50,7 +51,7 @@ export function BlogPreview() {
               className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105"
             >
               <div className="relative h-48">
-                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+                <Image src={post.image || CLOUDINARY_PLACEHOLDER} alt={post.title} fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{post.title}</h3>

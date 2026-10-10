@@ -2,8 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import { MdCheckCircle } from "react-icons/md"
-import wiring from "../images/wiring.jpeg"
-import wire from "../images/wiring.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const wiring = cloudinaryImage("wiring.jpeg")
+const wire = cloudinaryImage("wiring.jpg")
 
 export default function ElectricalWiringPage() {
   return (

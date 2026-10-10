@@ -7,6 +7,7 @@ import { MdChat, MdClose, MdSend, MdHourglassTop } from "react-icons/md"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import Image from "next/image"
+import { CLOUDINARY_LOGO } from "@/src/lib/cloudinary"
 
 export function LiveChat() {
   const [isOpen, setIsOpen] = useState(false)
@@ -79,7 +80,7 @@ export function LiveChat() {
           <div className="bg-primary text-white p-4 flex items-center">
             <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3 bg-white">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
+                src={CLOUDINARY_LOGO}
                 alt="Omnipower Solutions"
                 fill
                 className="object-contain p-1"

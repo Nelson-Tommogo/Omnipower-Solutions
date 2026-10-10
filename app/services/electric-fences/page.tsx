@@ -2,9 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import { MdCheckCircle } from "react-icons/md"
-import fence from "../images/electricfence.jpeg"
-import electricfence from "../images/electricfence.jpg"
-import electric from "../images/electricfencee.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const fence = cloudinaryImage("electricfence.jpeg")
+const electricfence = cloudinaryImage("electricfence.jpg")
+const electric = cloudinaryImage("electricfencee.jpg")
 
 export default function ElectricFencesPage() {
   return (

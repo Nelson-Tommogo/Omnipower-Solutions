@@ -2,8 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import { MdCheckCircle } from "react-icons/md"
-import solar from "../images/solarpanelkit.jpg"
-import panel from "../images/panel.jpeg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const solar = cloudinaryImage("solarpanelkit.jpg")
+const panel = cloudinaryImage("panel.jpeg")
 
 export default function SolarInstallationPage() {
   return (

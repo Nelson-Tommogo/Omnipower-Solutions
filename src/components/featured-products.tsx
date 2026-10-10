@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import Image, { type StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
@@ -13,17 +13,14 @@ import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import { MdAddShoppingCart, MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md"
 import { useCart } from "./cart-provider"
-import cctv from "./images/hdcctv.jpg"
-import smartdoor from "./images/hdsmartdoorlock.jpg"
-import solar from "./images/solarpanelkit.jpg"
-import fence from "./images/electricfence.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
 
 const products: {
   id: string
   name: string
   description: string
   price: number
-  image: StaticImageData
+  image: string
   tag: string
 }[] = [
   {
@@ -31,7 +28,7 @@ const products: {
     name: "HD CCTV Camera",
     description: "Clear 1080p security with night vision.",
     price: 7500,
-    image: cctv,
+    image: cloudinaryImage("hdcctv.jpg"),
     tag: "Best seller",
   },
   {
@@ -39,7 +36,7 @@ const products: {
     name: "Smart Door Lock",
     description: "Keyless access with fingerprint and PIN.",
     price: 12000,
-    image: smartdoor,
+    image: cloudinaryImage("hdsmartdoorlock.jpg"),
     tag: "Smart living",
   },
   {
@@ -47,7 +44,7 @@ const products: {
     name: "Solar Panel Kit",
     description: "A dependable start to your solar setup.",
     price: 25000,
-    image: solar,
+    image: cloudinaryImage("solarpanelkit.jpg"),
     tag: "Energy",
   },
   {
@@ -55,7 +52,7 @@ const products: {
     name: "Electric Fence Energizer",
     description: "Reliable pulse power for perimeter security.",
     price: 8500,
-    image: fence,
+    image: cloudinaryImage("electricfence.jpg"),
     tag: "Security",
   },
 ]
@@ -165,7 +162,7 @@ export function FeaturedProducts() {
                         id: product.id,
                         name: product.name,
                         price: product.price,
-                        image: product.image.src,
+                        image: product.image,
                       })
                     }
                     aria-label={`Add ${product.name} to cart`}

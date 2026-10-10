@@ -2,8 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import { MdCheckCircle } from "react-icons/md"
-import gates from "../images/automatedgates.jpg"
-import dooors from "../images/hdsmartdoorlock.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const gates = cloudinaryImage("automatedgates.jpg")
+const dooors = cloudinaryImage("hdsmartdoorlock.jpg")
 
 export default function AutomatedGatesPage() {
   return (

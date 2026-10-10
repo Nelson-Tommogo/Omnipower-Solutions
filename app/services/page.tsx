@@ -1,10 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import wiring from "./images/wiring.jpeg"
-import solar from "./images/solarpanelkit.jpg"
-import cctv from "./images/cctvpic.jpeg"
-import fences from "./images/electricfence.jpeg"
-import gates from "./images/automatedgates.jpg"
+import { cloudinaryImage, CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
+
+const wiring = cloudinaryImage("wiring.jpeg")
+const solar = cloudinaryImage("solarpanelkit.jpg")
+const cctv = cloudinaryImage("cctvpic.jpeg")
+const fences = cloudinaryImage("electricfence.jpeg")
+const gates = cloudinaryImage("automatedgates.jpg")
 
 const services = [
   {
@@ -100,7 +102,7 @@ export default function ServicesPage() {
             <div key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/3 relative h-64 md:h-auto">
-                  <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+                  <Image src={service.image || CLOUDINARY_PLACEHOLDER} alt={service.title} fill className="object-cover" />
                 </div>
                 <div className="md:w-2/3 p-8">
                   <h2 className="text-3xl font-bold mb-4">{service.title}</h2>

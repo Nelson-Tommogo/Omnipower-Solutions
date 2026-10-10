@@ -7,6 +7,7 @@ import { Button } from "@/src/components/ui/button"
 import { useCart } from "@/src/components/cart-provider"
 import { useState } from "react"
 import { CheckoutForm } from "./checkout-form"
+import { CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
 
 export function CartContent() {
   const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCart()
@@ -47,7 +48,7 @@ export function CartContent() {
             {items.map((item) => (
               <div key={item.id} className="p-6 border-b flex flex-col sm:flex-row gap-4 items-center">
                 <div className="relative w-20 h-20 flex-shrink-0">
-                  <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-contain" />
+                  <Image src={item.image || CLOUDINARY_PLACEHOLDER} alt={item.name} fill className="object-contain" />
                 </div>
 
                 <div className="flex-grow">

@@ -10,9 +10,7 @@ import { Input } from "@/src/components/ui/input"
 import { Checkbox } from "@/src/components/ui/checkbox"
 import { Label } from "@/src/components/ui/label"
 import { useCart } from "@/src/components/cart-provider"
-import hdcctv from "./hdcctv.jpg"
-import solarpanel from "./solarpanel.jpg"
-import gate from "./automatedgates.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
 
 const products = [
   {
@@ -21,7 +19,7 @@ const products = [
     description: "1080p high-definition security camera with night vision",
     price: 7500,
     category: "security",
-    image: hdcctv,
+    image: cloudinaryImage("hdcctv.jpg"),
     link: "/shop/p1",
   },
   {
@@ -30,7 +28,7 @@ const products = [
     description: "250W solar panel with mounting hardware and inverter",
     price: 25000,
     category: "solar",
-    image: solarpanel,
+    image: cloudinaryImage("solarpanel.jpg"),
     link: "/shop/p2",
   },
   {
@@ -39,7 +37,7 @@ const products = [
     description: "Heavy-duty motor for sliding and swing gates",
     price: 18000,
     category: "automation",
-    image: gate,
+    image: cloudinaryImage("automatedgates.jpg"),
     link: "/shop/p3",
   },
 ]

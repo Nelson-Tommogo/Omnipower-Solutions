@@ -2,9 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import { MdCheckCircle } from "react-icons/md"
-import cctv from "../images/hdcctv.jpg"
-import cctvhd from "../images/cctv.jpg"
-import cctvpic from "../images/cctvpic.jpeg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
+
+const cctv = cloudinaryImage("hdcctv.jpg")
+const cctvhd = cloudinaryImage("cctv.jpg")
+const cctvpic = cloudinaryImage("cctvpic.jpeg")
 
 
 export default function CCTVInstallationPage() {

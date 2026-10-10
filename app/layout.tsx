@@ -9,6 +9,7 @@ import { Footer } from "@/src/components/footer"
 import { BottomNav } from "@/src/components/bottom-nav"
 import { InstallPrompt } from "@/src/components/install-prompt"
 import { ServiceWorkerRegister } from "@/src/components/service-worker-register"
+import { CLOUDINARY_LOGO } from "@/src/lib/cloudinary"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -51,8 +52,8 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#5C1414" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="theme-color" content="#5C1414" />
-        <link rel="icon" href="/placeholder-logo.png" />
-        <link rel="apple-touch-icon" href="/placeholder-logo.png" />
+        <link rel="icon" href={CLOUDINARY_LOGO} />
+        <link rel="apple-touch-icon" href={CLOUDINARY_LOGO} />
       </head>
       <body className={inter.className}>
         <AppRouterCacheProvider options={{ key: "mui" }}>

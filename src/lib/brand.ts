@@ -1,2 +1,2 @@
 export const BRAND_LOGO_SRC =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-no-background-vL63ZUhImA3EPgdHudJCaGLKdJ0MUw.png"
+  "https://res.cloudinary.com/jaioidwt/image/upload/v1791660056/omnipowerlogo.png"

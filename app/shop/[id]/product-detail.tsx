@@ -6,6 +6,7 @@ import { MdShoppingCart, MdCheck, MdKeyboardArrowDown, MdKeyboardArrowUp } from 
 import { Button } from "@/src/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
 import { useCart } from "@/src/components/cart-provider"
+import { CLOUDINARY_PLACEHOLDER } from "@/src/lib/cloudinary"
 
 type ProductDetailProps = {
   product: {
@@ -56,7 +57,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 p-8">
           <div className="relative h-80">
             <Image 
-              src={product.image || "/placeholder.svg"} 
+              src={product.image || CLOUDINARY_PLACEHOLDER} 
               alt={product.name} 
               fill 
               className="object-contain" 

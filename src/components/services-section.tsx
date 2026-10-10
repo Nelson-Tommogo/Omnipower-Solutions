@@ -1,4 +1,4 @@
-import Image, { type StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
@@ -7,13 +7,15 @@ import CardActionArea from "@mui/material/CardActionArea"
 import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import { MdArrowOutward } from "react-icons/md"
-import wiringImage from "../../app/services/images/wiring.jpeg"
-import solarImage from "../../app/services/images/panel.jpeg"
-import cctvImage from "../../app/services/images/cctvpic.jpeg"
-import fenceImage from "../../app/services/images/electricfence.jpeg"
-import gatesImage from "../../app/services/images/automatedgates.jpg"
+import { cloudinaryImage } from "@/src/lib/cloudinary"
 
-const services: { title: string; description: string; image: StaticImageData; href: string; number: string }[] = [
+const wiringImage = cloudinaryImage("wiring.jpeg")
+const solarImage = cloudinaryImage("panel.jpeg")
+const cctvImage = cloudinaryImage("cctvpic.jpeg")
+const fenceImage = cloudinaryImage("electricfence.jpeg")
+const gatesImage = cloudinaryImage("automatedgates.jpg")
+
+const services: { title: string; description: string; image: string; href: string; number: string }[] = [
   {
     title: "Electrical wiring",
     description: "Safe, reliable electrical installations and upgrades for every kind of space.",

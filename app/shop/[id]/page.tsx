@@ -1,5 +1,6 @@
 import { ProductDetail } from "./product-detail";
 import { notFound } from "next/navigation";
+import { cloudinaryImage } from "@/src/lib/cloudinary";
 
 interface Product {
   id: string;
@@ -65,7 +66,7 @@ const products: Product[] = [
       Material: "Zinc alloy",
       Color: "Black"
     },
-    image: "/public/smart-lock-with-digital-interface-futuristic-design.jpg"
+    image: cloudinaryImage("smart-lock-with-digital-interface-futuristic-design.jpg")
   },
   {
     id: "p3",
@@ -92,7 +93,7 @@ const products: Product[] = [
       "Charge Controller": "30A MPPT",
       Warranty: "25 years (panel), 5 years (electronics)"
     },
-    image: "/public/solarpanelkit.jpg"
+    image: cloudinaryImage("solarpanelkit.jpg")
   },
   {
     id: "p12",
